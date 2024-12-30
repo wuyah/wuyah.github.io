@@ -1,0 +1,401 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Computer Graphics | Hugo Academic CV Theme</title>
+    <link>http://localhost:1313/tags/computer-graphics/</link>
+      <atom:link href="http://localhost:1313/tags/computer-graphics/index.xml" rel="self" type="application/rss+xml" />
+    <description>Computer Graphics</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 25 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu7729264130191091259.png</url>
+      <title>Computer Graphics</title>
+      <link>http://localhost:1313/tags/computer-graphics/</link>
+    </image>
+    
+    <item>
+      <title>CSE270 - Discret Differential Geometry</title>
+      <link>http://localhost:1313/project/cse270/</link>
+      <pubDate>Wed, 25 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/cse270/</guid>
+      <description>
+
+
+&lt;details class=&#34;print:hidden xl:hidden&#34; open&gt;
+  &lt;summary&gt;Table of Contents&lt;/summary&gt;
+  &lt;div class=&#34;text-sm&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#overview&#34;&gt;Overview&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#1-discrete-laplacian&#34;&gt;1. Discrete Laplacian&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#understanding-the-discrete-laplacian&#34;&gt;Understanding the Discrete Laplacian&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#key-components&#34;&gt;Key Components&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#matrix-construction&#34;&gt;Matrix Construction&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#eigenvalue-analysis&#34;&gt;Eigenvalue Analysis&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#result&#34;&gt;Result&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#2-parallel-frames-on-space-curves&#34;&gt;2. Parallel Frames on Space Curves&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#understanding-parallel-frames&#34;&gt;Understanding Parallel Frames&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#key-components-1&#34;&gt;Key Components&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#implementation-principles&#34;&gt;Implementation Principles&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#result-1&#34;&gt;Result&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#3-conformal-mapping&#34;&gt;3. Conformal Mapping&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#4-vector-field-design-cross-fields-on-surfaces&#34;&gt;4. Vector Field Design: Cross Fields on Surfaces&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#license&#34;&gt;License&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
+
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;This course introduces the mathematical principles of geometry, emphasizing coordinate-free representations and the relationships between geometric entities. Prof. Albert Chern offers a comprehensive introduction to Exterior Algebra, Discrete Laplacian, Curves and Surfaces, Hodge Decomposition, Conformal Flattening, and Vector Field Design. Below are my course works, all implemented in Houdini.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-discrete-laplacian&#34;&gt;1. Discrete Laplacian&lt;/h2&gt;
+&lt;p&gt;The &lt;strong&gt;Discrete Laplacian&lt;/strong&gt; bridges continuous mathematical concepts with their discrete counterparts on 3D meshes. The course work explores the construction of the Discrete Laplacian on the Bunny.obj mesh.&lt;/p&gt;
+&lt;h3 id=&#34;understanding-the-discrete-laplacian&#34;&gt;Understanding the Discrete Laplacian&lt;/h3&gt;
+&lt;p&gt;The Discrete Laplacian captures both the mesh&amp;rsquo;s connectivity and geometric properties through a combination of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cotangent weights for local geometry&lt;/li&gt;
+&lt;li&gt;Discrete exterior derivatives for topology&lt;/li&gt;
+&lt;li&gt;Hodge star operators for metric information&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;key-components&#34;&gt;Key Components&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Cotangent Weights:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For vertices $v_i$ and $v_j$ connected by an edge:
+\[
+     w_{ij} = \frac{1}{2} (\cot \alpha + \cot \beta)
+     \]
+where $\alpha$ and $\beta$ are opposite angles to the edge&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Discrete Exterior Derivative ($d_0$):&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Maps vertex functions to edge functions&lt;/li&gt;
+&lt;li&gt;For an edge $e$ connecting vertices $v_i$ and $v_j$:
+\[
+     (d₀ f)_e = f(v_j) - f(v_i)
+     \]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Hodge Star Operators:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;$star_0$: Operates on vertices, using local area weights&lt;/li&gt;
+&lt;li&gt;$star_1$: Operates on edges, using cotangent weights&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;matrix-construction&#34;&gt;Matrix Construction&lt;/h3&gt;
+\[
+L = d₀^T \star_1 d₀
+\]&lt;h3 id=&#34;eigenvalue-analysis&#34;&gt;Eigenvalue Analysis&lt;/h3&gt;
+\[
+L \mathbf{f} = \lambda \star_0 \mathbf{f}
+\]&lt;ul&gt;
+&lt;li&gt;Low eigenvalues: Global, smooth variations&lt;/li&gt;
+&lt;li&gt;High eigenvalues: Local, oscillatory patterns&lt;/li&gt;
+&lt;li&gt;Eigenfunctions: Geometric modes of the mesh&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;result&#34;&gt;Result&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Discrete Laplacian on Bunny.obj&#34; srcset=&#34;
+               /project/cse270/hw2_hu9459823660581520825.webp 400w,
+               /project/cse270/hw2_hu1646327279027015749.webp 760w,
+               /project/cse270/hw2_hu16680938560338288610.webp 1200w&#34;
+               src=&#34;http://localhost:1313/project/cse270/hw2_hu9459823660581520825.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;428&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-parallel-frames-on-space-curves&#34;&gt;2. Parallel Frames on Space Curves&lt;/h2&gt;
+&lt;p&gt;The second course work explores &lt;strong&gt;parallel frames&lt;/strong&gt; on discrete space curves, which provide a robust way to define coordinate systems along curves in 3D space.&lt;/p&gt;
+&lt;h3 id=&#34;understanding-parallel-frames&#34;&gt;Understanding Parallel Frames&lt;/h3&gt;
+&lt;p&gt;Parallel frames offer advantages over traditional Frenet frames by providing smooth transitions and avoiding discontinuities at inflection points.&lt;/p&gt;
+&lt;h3 id=&#34;key-components-1&#34;&gt;Key Components&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Discrete Space Curve:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A sequence of points $\gamma_0, \gamma_1, ..., \gamma_{n-1}$ in 3D space&lt;/li&gt;
+&lt;li&gt;Connected by edges forming the curve&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Tangent Vectors:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;For each edge $(i, i+1)$:
+\[
+     T_{i,i+1} = \frac{\gamma_{i+1} - \gamma_i}{|\gamma_{i+1} - \gamma_i|}
+     \]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Frame Definition:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tangent vector $T_{i-1,i}$&lt;/li&gt;
+&lt;li&gt;Normal vector $U_{i-1,i}$ perpendicular to tangent&lt;/li&gt;
+&lt;li&gt;Parallel transport ensures minimal twisting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;implementation-principles&#34;&gt;Implementation Principles&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Frame Transport:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Between edges: Rotate frame about $T_{i-1,i} \times T_{i,i+1}$&lt;/li&gt;
+&lt;li&gt;Maintains smoothness while minimizing twist&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Geometric Properties:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Preserves parallel nature of frames&lt;/li&gt;
+&lt;li&gt;Minimizes total rotation along curve&lt;/li&gt;
+&lt;li&gt;Adapts to curve geometry naturally&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&#34;result-1&#34;&gt;Result&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Parallel Frames Implementation&#34; srcset=&#34;
+               /project/cse270/hw3_hu3185987774226379870.webp 400w,
+               /project/cse270/hw3_hu3587444980129062844.webp 760w,
+               /project/cse270/hw3_hu3772349313569295958.webp 1200w&#34;
+               src=&#34;http://localhost:1313/project/cse270/hw3_hu3185987774226379870.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;574&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;3-conformal-mapping&#34;&gt;3. Conformal Mapping&lt;/h2&gt;
+&lt;p&gt;Conformal mapping ensures that texture coordinates applied to a 3D surface preserve angles and local shapes, minimizing distortion. This property is critical for applications like texture mapping, geometric analysis, and visual effects.&lt;/p&gt;
+&lt;h4 id=&#34;key-concepts&#34;&gt;&lt;strong&gt;Key Concepts&lt;/strong&gt;&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Conformal Energy:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The conformal energy measures how close a map is to being conformal. It is defined as:
+\[
+     C[z] = \frac{1}{2}\|dz\|^2 - \text{Area}[z]
+     \]
+where \(\|dz\|\) represents the Dirichlet energy, and \(\text{Area}[z]\) captures the total area of the mapped surface.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Rayleigh Quotient:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The conformal map is obtained by minimizing the Rayleigh quotient:
+\[
+     \min_z \frac{z^H C z}{z^H \star_0 z}
+     \]
+This leads to solving the eigenvalue problem:
+\[
+     C z = \lambda \star_0 z
+     \]&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;implementation-in-houdini&#34;&gt;&lt;strong&gt;Implementation in Houdini&lt;/strong&gt;&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Laplacian and Area Matrices:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The Laplacian matrix (\(L\)) and area matrix (\(A\)) were precomputed using sparse matrix operations. The combined conformal matrix (\(C\)) was derived as:
+\[
+     C = \frac{1}{2} L - A
+     \]
+They are same as what we did in section 1.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Eigenvalue Solver:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Using a spectral solver, the smallest nonzero eigenvalue and its corresponding eigenvector were computed. This eigenvector defines the conformal map.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Texture Coordinates:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The real and imaginary parts of the solution were assigned as \(u\) and \(v\) attributes to the mesh points. These attributes define the conformal texture map.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Visualization:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Houdini&amp;rsquo;s and texture shaders and displacement shader were used to preview the conformal map and apply textures without distortion.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4 id=&#34;result-2&#34;&gt;&lt;strong&gt;Result&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Conformal Mapping Implemenation&#34; srcset=&#34;
+               /project/cse270/hw4_hu14022350943677464769.webp 400w,
+               /project/cse270/hw4_hu4602273259186994280.webp 760w,
+               /project/cse270/hw4_hu13528580409088294468.webp 1200w&#34;
+               src=&#34;http://localhost:1313/project/cse270/hw4_hu14022350943677464769.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;428&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;4-vector-field-design-cross-fields-on-surfaces&#34;&gt;4. Vector Field Design: Cross Fields on Surfaces&lt;/h2&gt;
+&lt;p&gt;The final coursework explores the design of &lt;strong&gt;cross fields&lt;/strong&gt; on 3D surfaces, such as the Bunny mesh, using a connection Laplacian approach. Cross fields are essential in applications like quadrilateral remeshing and direction field design.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;key-concepts-1&#34;&gt;&lt;strong&gt;Key Concepts&lt;/strong&gt;&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Cross Fields:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;A cross field is a quarter-turn symmetric vector field, meaning it returns to its original state after a \( \pi/2 \) rotation.&lt;/li&gt;
+&lt;li&gt;The field&amp;rsquo;s orientation at each point is encoded as a phase angle, \(@phase\), derived from a complex-valued eigenfunction.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Connection Laplacian:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To ensure smooth transitions between cross fields at neighboring points, the connection Laplacian incorporates angular offsets \(\alpha_{ij}\), which account for misalignment of reference directions at adjacent points.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;implementation&#34;&gt;&lt;strong&gt;Implementation&lt;/strong&gt;&lt;/h4&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Connection Weights:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Compute the &lt;strong&gt;Levi-Civita connection&lt;/strong&gt; \(\alpha_{ij}^{LC}\), which defines angular relationships between half-edges.&lt;/li&gt;
+&lt;li&gt;Scale the Levi-Civita connection by a factor of 4 to adjust for the quarter-turn symmetry of the cross field.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Covariant Derivative:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Define the derivative \((d_{\nabla}\psi)_{ij} = e^{-i\alpha_{ij}}\psi_j - \psi_i\), where \(\psi\) is the complex-valued function encoding the cross field.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Minimizing Energy:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Solve the smallest eigenvalue problem of the connection Laplacian:
+\[
+     L\psi = \lambda \star_0 \psi
+     \]
+where \(L\) is constructed from the covariant derivative, and \(\star_0, \star_1\) are area and cotangent weight matrices.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Visualization:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Extract the phase angle, \(@phase = \text{atan2}(\text{Im}(\psi), \text{Re}(\psi))\), and visualize the cross field as a rotation from the reference half-edge.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h4 id=&#34;result-3&#34;&gt;&lt;strong&gt;Result&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;The smoothest cross field was generated by solving the eigenvalue problem, and singularities were identified and visualized as critical points on the Bunny mesh. This showcases the elegance of geometric processing for practical applications like remeshing and surface parameterization.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Vector Field Design Implementation&#34; srcset=&#34;
+               /project/cse270/hw5_hu11804630775578755073.webp 400w,
+               /project/cse270/hw5_hu7316688090065964729.webp 760w,
+               /project/cse270/hw5_hu2747445893521161779.webp 1200w&#34;
+               src=&#34;http://localhost:1313/project/cse270/hw5_hu11804630775578755073.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;428&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+&lt;p&gt;Copyright 2016-present &lt;a href=&#34;https://georgecushen.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;George Cushen&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Released under the &lt;a href=&#34;https://github.com/HugoBlox/hugo-blox-builder/blob/main/LICENSE.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

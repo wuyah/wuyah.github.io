@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MPI | Hugo Academic CV Theme</title>
+    <link>http://localhost:1313/tags/mpi/</link>
+      <atom:link href="http://localhost:1313/tags/mpi/index.xml" rel="self" type="application/rss+xml" />
+    <description>MPI</description>
+    <generator>Hugo Blox Builder (https://hugoblox.com)</generator><language>en-us</language><lastBuildDate>Wed, 25 Dec 2024 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>http://localhost:1313/media/icon_hu7729264130191091259.png</url>
+      <title>MPI</title>
+      <link>http://localhost:1313/tags/mpi/</link>
+    </image>
+    
+    <item>
+      <title>CSE260 - Parallel Computing Portfolio</title>
+      <link>http://localhost:1313/project/cse260/</link>
+      <pubDate>Wed, 25 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/project/cse260/</guid>
+      <description>
+
+
+&lt;details class=&#34;print:hidden xl:hidden&#34; open&gt;
+  &lt;summary&gt;Table of Contents&lt;/summary&gt;
+  &lt;div class=&#34;text-sm&#34;&gt;
+  &lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#overview&#34;&gt;Overview&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#project-1-optimizing-matrix-multiplication-with-cpu-vectorization&#34;&gt;Project 1: Optimizing Matrix Multiplication with CPU Vectorization&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#project-2-accelerating-matrix-multiplication-with-cuda&#34;&gt;Project 2: Accelerating Matrix Multiplication with CUDA&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#project-3-distributed-wave-simulation-with-mpi&#34;&gt;Project 3: Distributed Wave Simulation with MPI&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#reflections-and-future-work&#34;&gt;Reflections and Future Work&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#license&#34;&gt;License&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
+
+&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
+&lt;p&gt;CSE260 delves into the principles and practices of &lt;strong&gt;High-Performance Computing (HPC)&lt;/strong&gt;, emphasizing parallel programming paradigms to solve computationally intensive problems efficiently.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Key Topics Covered&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CPU Vectorization&lt;/strong&gt;: Leveraging vector extensions for parallel computation on CPUs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CUDA Programming&lt;/strong&gt;: Utilizing GPU architectures for accelerated computation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MPI (Message Passing Interface)&lt;/strong&gt;: Implementing distributed memory parallelism.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Thanks to Prof. Chin, I learned a lot from this course by praticing in the projects and analising the reasons behind the experiments&amp;rsquo; results&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;project-1-optimizing-matrix-multiplication-with-cpu-vectorization&#34;&gt;Project 1: Optimizing Matrix Multiplication with CPU Vectorization&lt;/h2&gt;
+&lt;p&gt;In this project, we optimized matrix multiplication by leveraging CPU vector extensions such as Intel&amp;rsquo;s AVX and ARM&amp;rsquo;s SVE to enhance computational throughput.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Techniques Employed&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cache Blocking&lt;/strong&gt;: Divided matrices into smaller blocks to fit into the CPU cache, reducing memory access latency.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Vector Intrinsics&lt;/strong&gt;: Utilized vectorized instructions to perform multiple operations per cycle, enhancing performance.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Memory Alignment&lt;/strong&gt;: Ensured data structures were aligned in memory to prevent performance penalties due to misalignment.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Outcomes&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Achieved significant performance improvements, with computation speeds exceeding 20 GFLOPS on ARM Neoverse V1 architecture.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;project-2-accelerating-matrix-multiplication-with-cuda&#34;&gt;Project 2: Accelerating Matrix Multiplication with CUDA&lt;/h2&gt;
+&lt;p&gt;This project focused on implementing matrix multiplication on NVIDIA GPUs using CUDA to exploit massive parallelism and achieve high computational throughput.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Approach&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tiling and Shared Memory&lt;/strong&gt;: Implemented tiling strategies to load matrix sub-blocks into shared memory, minimizing global memory access.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Thread Synchronization&lt;/strong&gt;: Managed synchronization among threads to ensure correct data handling during computation.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Loop Unrolling&lt;/strong&gt;: Applied loop unrolling techniques to reduce loop overhead and increase instruction-level parallelism.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Results&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Achieved performance exceeding 4 TFLOPS on NVIDIA T4 GPUs, demonstrating the effectiveness of GPU acceleration for matrix computations.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;CUDA Performance Graph Placeholder&lt;/em&gt; &lt;!-- Include a graph comparing CUDA performance metrics --&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;project-3-distributed-wave-simulation-with-mpi&#34;&gt;Project 3: Distributed Wave Simulation with MPI&lt;/h2&gt;
+&lt;p&gt;In this project, we developed a wave propagation simulation using MPI to distribute computations across multiple processors, enhancing scalability and performance.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Methodology&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Domain Decomposition&lt;/strong&gt;: Partitioned the simulation domain among processors to balance computational load.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Non-blocking Communication&lt;/strong&gt;: Employed MPI&amp;rsquo;s non-blocking communication routines to overlap computation with data exchange, reducing idle times.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Boundary Management&lt;/strong&gt;: Implemented ghost cell exchanges to handle boundary conditions between adjacent partitions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Achievements&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Maintained strong scaling efficiency above 95% up to 16 cores, indicating effective parallelization.&lt;/li&gt;
+&lt;li&gt;Demonstrated minimal communication overhead in weak scaling tests, showcasing good scalability for larger problem sizes.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;MPI Scaling Graph Placeholder&lt;/em&gt; &lt;!-- Include a graph illustrating MPI scaling efficiency --&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;reflections-and-future-work&#34;&gt;Reflections and Future Work&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Key Learnings&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Effective utilization of parallel programming paradigms can lead to significant performance enhancements in computational applications.&lt;/li&gt;
+&lt;li&gt;Understanding hardware architectures is crucial for optimizing software performance, particularly in HPC contexts.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Future Directions&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Explore advanced optimization techniques such as asynchronous computations and dynamic load balancing.&lt;/li&gt;
+&lt;li&gt;Investigate the integration of multiple parallel programming models to leverage the strengths of each.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
+&lt;p&gt;Copyright 2016-present &lt;a href=&#34;https://georgecushen.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;George Cushen&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Released under the &lt;a href=&#34;https://github.com/HugoBlox/hugo-blox-builder/blob/main/LICENSE.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
