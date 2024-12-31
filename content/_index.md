@@ -35,8 +35,8 @@ sections:
       title: '📚 About Me'
       subtitle: ''
       text: |-
-
-        Please reach out to collaborate 😃
+        I'm still learning every aspect of computer system and computer graphics. Love learning system for high performance computing and grphics.
+        Thanks for viewing my site! 😃
     design:
       columns: '1'
   # - block: collection
