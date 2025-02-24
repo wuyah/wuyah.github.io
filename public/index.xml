@@ -791,7 +791,7 @@ where \(L\) is constructed from the covariant derivative, and \(\star_0, \star_1
 
 
 
-&lt;div id=&#34;chart-513278469&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;chart-632159847&#34; class=&#34;chart&#34;&gt;&lt;/div&gt;
 &lt;script&gt;
   async function fetchChartJSON() {
     console.debug(&#39;Hugo Blox fetching chart JSON...&#39;)
@@ -809,7 +809,7 @@ where \(L\) is constructed from the covariant derivative, and \(\star_0, \star_1
 
       fetchChartJSON().then(chart =&gt; {
         console.debug(&#39;Plotting chart...&#39;)
-        window.Plotly.newPlot(&#39;chart-513278469&#39;, chart.data, chart.layout, {responsive: true});
+        window.Plotly.newPlot(&#39;chart-632159847&#39;, chart.data, chart.layout, {responsive: true});
       });
     }, 500 );
   })();
