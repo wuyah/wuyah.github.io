@@ -19,7 +19,7 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Master of Computer Science
+role: Master Student
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
