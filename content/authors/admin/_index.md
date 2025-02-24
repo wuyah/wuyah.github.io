@@ -19,12 +19,12 @@ superuser: true
 highlight_name: true
 
 # Role/position/tagline
-role: Chief Scientist
+role: Master of Computer Science
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: OpenAI
-    url: https://openai.com/
+  - name: UCSD
+    url: https://ucsd.edu/
 
 # Social network links
 # Need to use another icon? Simply download the SVG icon to your `assets/media/icons/` folder.
@@ -37,9 +37,9 @@ profiles:
   # - icon: brands/instagram
   #   url: https://www.instagram.com/
   - icon: brands/github
-    url: https://github.com/gcushen
+    url: https://github.com/wuyah
   - icon: brands/linkedin
-    url: https://www.linkedin.com/
+    url: https://www.linkedin.com/in/zeli046/
   # - icon: academicons/google-scholar
   #   url: https://scholar.google.com/
   # - icon: academicons/orcid
@@ -63,6 +63,14 @@ education:
     summary: |
       GPA: 3.86/4.0
 
+      Undergrad Thesis:
+        Text-driven Human Motion Generation with Lantent Diffusion Model
+
+      My favorite courses:
+        - Principle of Operation Systems
+        - Principle of Compiler
+        - Assemble Language
+        - Machine Learning Theory
 
 # education:
 #   - area: MS Computer Science & Engineering
@@ -99,13 +107,13 @@ education:
 work:
   - position: Software Engineering Intern
     company_name: Adroitst
-    company_url: ''
-    company_logo: ''
+    # company_url: ''
+    # company_logo: ''
     date_start: '2024-06-01'
     date_end: '2024-09-01'
     summary: |2-
       Responsibilities include:
-      - Upgraded rendering engine from Ogre 10.x to Ogre-Next 3
+      - Upgraded rendering engine from Ogre 10.x to Ogre-Next 3.x
       - Fix rendering bugs and profile performance by using RenderDoc.
       - Using Ogre's High-Level Material System (Hlms) to write cross platform shader to visual effects.
 
@@ -123,7 +131,7 @@ skills:
         percent: 100
         icon: chart-bar
       - name: python
-        description: 'Use it to d'
+        description: 'Use it to run learning-related projects'
         percent: 40
         icon: circle-stack
   - name: Hobbies

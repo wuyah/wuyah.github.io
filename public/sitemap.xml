@@ -38,7 +38,15 @@
     <lastmod>2024-12-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
+    <loc>http://localhost:1313/project/cse272/</loc>
+    <lastmod>2024-12-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
     <loc>http://localhost:1313/tags/geometry-processing/</loc>
+    <lastmod>2024-12-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/tags/graphics/</loc>
     <lastmod>2024-12-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
@@ -51,6 +59,10 @@
     <changefreq>weekly</changefreq>
   </url><url>
     <loc>http://localhost:1313/tags/mpi/</loc>
+    <lastmod>2024-12-25T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+  </url><url>
+    <loc>http://localhost:1313/project/shadertoy/</loc>
     <lastmod>2024-12-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
   </url><url>
