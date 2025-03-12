@@ -251,32 +251,22 @@ This leads to solving the eigenvalue problem:
 &lt;h4 id=&#34;implementation-in-houdini&#34;&gt;&lt;strong&gt;Implementation in Houdini&lt;/strong&gt;&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Laplacian and Area Matrices:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The Laplacian matrix (\(L\)) and area matrix (\(A\)) were precomputed using sparse matrix operations. The combined conformal matrix (\(C\)) was derived as:
 \[
      C = \frac{1}{2} L - A
-     \]
-They are same as what we did in section 1.&lt;/li&gt;
-&lt;/ul&gt;
+     \]&lt;p&gt;
+They are same as what we did in section 1.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Eigenvalue Solver:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Using a spectral solver, the smallest nonzero eigenvalue and its corresponding eigenvector were computed. This eigenvector defines the conformal map.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Eigenvalue Solver:&lt;/strong&gt;
+Using a spectral solver, the smallest nonzero eigenvalue and its corresponding eigenvector were computed. This eigenvector defines the conformal map.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Texture Coordinates:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The real and imaginary parts of the solution were assigned as \(u\) and \(v\) attributes to the mesh points. These attributes define the conformal texture map.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Texture Coordinates:&lt;/strong&gt;
+The real and imaginary parts of the solution were assigned as \(u\) and \(v\) attributes to the mesh points. These attributes define the conformal texture map.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Visualization:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Houdini&amp;rsquo;s and texture shaders and displacement shader were used to preview the conformal map and apply textures without distortion.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Visualization:&lt;/strong&gt;
+Houdini&amp;rsquo;s texture shaders and displacement shader were used to preview the conformal map and apply textures without distortion.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id=&#34;result-2&#34;&gt;&lt;strong&gt;Result&lt;/strong&gt;&lt;/h4&gt;

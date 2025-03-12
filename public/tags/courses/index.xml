@@ -47,7 +47,35 @@
 &lt;p&gt;Thanks to Prof. Chin, I learned a lot from this course by praticing in the projects and analising the reasons behind the experiments&amp;rsquo; results&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;project-1-optimizing-matrix-multiplication-with-cpu-vectorization&#34;&gt;Project 1: Optimizing Matrix Multiplication with CPU Vectorization&lt;/h2&gt;
-&lt;p&gt;In this project, we optimized matrix multiplication by leveraging CPU vector extensions such as Intel&amp;rsquo;s AVX and ARM&amp;rsquo;s SVE to enhance computational throughput.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;alt text&#34; srcset=&#34;
+               /project/cse260/image-3_hu9367625775072898446.webp 400w,
+               /project/cse260/image-3_hu17786200574989343527.webp 760w,
+               /project/cse260/image-3_hu14680535611392509213.webp 1200w&#34;
+               src=&#34;http://localhost:1313/project/cse260/image-3_hu9367625775072898446.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;456&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+In this project, we optimized matrix multiplication by leveraging CPU vector extensions such as Intel&amp;rsquo;s AVX and ARM&amp;rsquo;s SVE to enhance computational throughput.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Techniques Employed&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Cache Blocking&lt;/strong&gt;: Divided matrices into smaller blocks to fit into the CPU cache, reducing memory access latency.&lt;/li&gt;
@@ -60,7 +88,35 @@
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;project-2-accelerating-matrix-multiplication-with-cuda&#34;&gt;Project 2: Accelerating Matrix Multiplication with CUDA&lt;/h2&gt;
-&lt;p&gt;This project focused on implementing matrix multiplication on NVIDIA GPUs using CUDA to exploit massive parallelism and achieve high computational throughput.&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;alt text&#34; srcset=&#34;
+               /project/cse260/image-4_hu15383316976014161530.webp 400w,
+               /project/cse260/image-4_hu11406393982847062270.webp 760w,
+               /project/cse260/image-4_hu17418213089925729560.webp 1200w&#34;
+               src=&#34;http://localhost:1313/project/cse260/image-4_hu15383316976014161530.webp&#34;
+               width=&#34;512&#34;
+               height=&#34;229&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+
+This project focused on implementing matrix multiplication on NVIDIA GPUs using CUDA to exploit massive parallelism and achieve high computational throughput.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Approach&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Tiling and Shared Memory&lt;/strong&gt;: Implemented tiling strategies to load matrix sub-blocks into shared memory, minimizing global memory access.&lt;/li&gt;
@@ -74,7 +130,13 @@
 &lt;p&gt;&lt;em&gt;CUDA Performance Graph Placeholder&lt;/em&gt; &lt;!-- Include a graph comparing CUDA performance metrics --&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;project-3-distributed-wave-simulation-with-mpi&#34;&gt;Project 3: Distributed Wave Simulation with MPI&lt;/h2&gt;
-&lt;p&gt;In this project, we developed a wave propagation simulation using MPI to distribute computations across multiple processors, enhancing scalability and performance.&lt;/p&gt;
+&lt;!-- ![alt text](image.png)![alt text](image-1.png)![alt text](image-2.png) --&gt;
+&lt;div style=&#34;display: flex; justify-content: center;&#34;&gt;
+  &lt;img src=&#34;image.png&#34; alt=&#34;Image 1&#34; width=&#34;30%&#34;&gt;
+  &lt;img src=&#34;image-1.png&#34; alt=&#34;Image 2&#34; width=&#34;30%&#34;&gt;
+  &lt;img src=&#34;image-2.png&#34; alt=&#34;Image 3&#34; width=&#34;30%&#34;&gt;
+&lt;/div&gt;
+In this project, we developed a wave propagation simulation using MPI to distribute computations across multiple processors, enhancing scalability and performance.
 &lt;p&gt;&lt;strong&gt;Methodology&lt;/strong&gt;:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Domain Decomposition&lt;/strong&gt;: Partitioned the simulation domain among processors to balance computational load.&lt;/li&gt;
@@ -345,32 +407,22 @@ This leads to solving the eigenvalue problem:
 &lt;h4 id=&#34;implementation-in-houdini&#34;&gt;&lt;strong&gt;Implementation in Houdini&lt;/strong&gt;&lt;/h4&gt;
 &lt;ol&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Laplacian and Area Matrices:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The Laplacian matrix (\(L\)) and area matrix (\(A\)) were precomputed using sparse matrix operations. The combined conformal matrix (\(C\)) was derived as:
 \[
      C = \frac{1}{2} L - A
-     \]
-They are same as what we did in section 1.&lt;/li&gt;
-&lt;/ul&gt;
+     \]&lt;p&gt;
+They are same as what we did in section 1.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Eigenvalue Solver:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Using a spectral solver, the smallest nonzero eigenvalue and its corresponding eigenvector were computed. This eigenvector defines the conformal map.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Eigenvalue Solver:&lt;/strong&gt;
+Using a spectral solver, the smallest nonzero eigenvalue and its corresponding eigenvector were computed. This eigenvector defines the conformal map.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Texture Coordinates:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The real and imaginary parts of the solution were assigned as \(u\) and \(v\) attributes to the mesh points. These attributes define the conformal texture map.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Texture Coordinates:&lt;/strong&gt;
+The real and imaginary parts of the solution were assigned as \(u\) and \(v\) attributes to the mesh points. These attributes define the conformal texture map.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Visualization:&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Houdini&amp;rsquo;s and texture shaders and displacement shader were used to preview the conformal map and apply textures without distortion.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Visualization:&lt;/strong&gt;
+Houdini&amp;rsquo;s texture shaders and displacement shader were used to preview the conformal map and apply textures without distortion.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;h4 id=&#34;result-2&#34;&gt;&lt;strong&gt;Result&lt;/strong&gt;&lt;/h4&gt;
@@ -493,9 +545,9 @@ where \(L\) is constructed from the covariant derivative, and \(\star_0, \star_1
     
     <item>
       <title>Disney BSDF - UCSD CSE 272</title>
-      <link>http://localhost:1313/project/cse272/</link>
+      <link>http://localhost:1313/project/cse272_disney/</link>
       <pubDate>Wed, 25 Dec 2024 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/project/cse272/</guid>
+      <guid>http://localhost:1313/project/cse272_disney/</guid>
       <description>
 
 
@@ -504,19 +556,213 @@ where \(L\) is constructed from the covariant derivative, and \(\star_0, \star_1
   &lt;div class=&#34;text-sm&#34;&gt;
   &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&#34;#overview&#34;&gt;Overview&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;#license&#34;&gt;License&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#disney-principled-bsdf&#34;&gt;Disney Principled BSDF&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#volumetric-rendering&#34;&gt;Volumetric Rendering&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href=&#34;#volume-rendering-equation&#34;&gt;Volume Rendering Equation&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#break-down&#34;&gt;Break down&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#participanting-media-data-structure&#34;&gt;Participanting Media Data Structure&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#monochromatic-absorption-only-homogeneous-volume&#34;&gt;monochromatic absorption-only homogeneous volume&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#single-monochromatic-homogeneous-volume-with-absorption-and-single-scattering-no-surface-lighting&#34;&gt;Single monochromatic homogeneous volume with absorption and single-scattering, no surface lighting&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-using-only-phase-function-sampling-no-surface-lighting&#34;&gt;Multiple monochromatic homogeneous volumes with absorption and multiple-scattering using only phase function sampling, no surface lighting&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&#34;#multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-with-both-phase-function-sampling-and-next-event-estimation-no-surface-lighting&#34;&gt;Multiple monochromatic homogeneous volumes with absorption and multiple-scattering with both phase function sampling and next event estimation, no surface lighting&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
   &lt;/div&gt;
 &lt;/details&gt;
 
-&lt;h2 id=&#34;overview&#34;&gt;Overview&lt;/h2&gt;
-&lt;p&gt;I have implemented some demos in ShaderToy just for fun. The course work of the NUS-SoC Summer workshop is in this repo: &lt;a href=&#34;https://www.shadertoy.com/view/mdjfRd&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;https://www.shadertoy.com/view/mdjfRd&lt;/a&gt;.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;license&#34;&gt;License&lt;/h2&gt;
-&lt;p&gt;Copyright 2016-present &lt;a href=&#34;https://georgecushen.com&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;George Cushen&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;Released under the &lt;a href=&#34;https://github.com/HugoBlox/hugo-blox-builder/blob/main/LICENSE.md&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIT&lt;/a&gt; license.&lt;/p&gt;
+&lt;h2 id=&#34;disney-principled-bsdf&#34;&gt;Disney Principled BSDF&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Result of disney bsdf.&#34; srcset=&#34;
+               /project/cse272_disney/disney_bsdf_array_hu14580244296769990818.webp 400w,
+               /project/cse272_disney/disney_bsdf_array_hu15282263902990540985.webp 760w,
+               /project/cse272_disney/disney_bsdf_array_hu18050512559318829935.webp 1200w&#34;
+               src=&#34;http://localhost:1313/project/cse272_disney/disney_bsdf_array_hu14580244296769990818.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;570&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Original handouts: &lt;a href=&#34;https://cseweb.ucsd.edu/~tzli/cse272/wi2025/homework1.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CSE 272 Homework1&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;This is a reproduction of a siggraph 2012 talk &lt;a href=&#34;https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;Physically-Based Shading at Disney&lt;/a&gt;. This shading model also implemented in Blender. And the lajolla renderer is capable of rendering scenes exported from Blender that have principled material.&lt;/p&gt;
+&lt;p&gt;The shading model contains 5 lobes, diffuse, metal, glass, clearcoat and sheen and we sample the lobes based on the principled parameters to make it efficient. For more details, please refer to the handout.&lt;/p&gt;
+&lt;h2 id=&#34;volumetric-rendering&#34;&gt;Volumetric Rendering&lt;/h2&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Result of a heterogeneous volume with a spectrally varying density over space, rendered
+with multiple-scattering&#34; srcset=&#34;
+               /project/cse272_disney/image_hu10412752157451466589.webp 400w,
+               /project/cse272_disney/image_hu5360276216743737642.webp 760w,
+               /project/cse272_disney/image_hu10526316202108566866.webp 1200w&#34;
+               src=&#34;http://localhost:1313/project/cse272_disney/image_hu10412752157451466589.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;570&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Implemented a Volume Renderer in lajolla.&lt;/p&gt;
+&lt;p&gt;The following things are simply same as the handout2&amp;rsquo;s pdf. I write them just for myself for a quicker and better review. (So in the future I can quickly unsderstand what I&amp;rsquo;ve done. :&amp;gt; )&lt;/p&gt;
+&lt;h3 id=&#34;volume-rendering-equation&#34;&gt;Volume Rendering Equation&lt;/h3&gt;
+$$
+\frac{d}{dt}L(\mathbb{p}(t)), \omega) = -(\sigma_a\ p(t) + \sigma_s\ p(t) )L(p(t), \omega) + L_e(p(t), \omega) + \sigma_s\ p(t) \int_{S_2}\rho(p(t), \omega, \omega&#39; )L(p(t), \omega&#39;)d\omega&#39; $$&lt;p&gt;Here $L$ is luminance, $p$ is distance function, $\sigma_\alpha$ is absorption coefficient, $\sigma_s$ is the scattering coefficient. And $\rho$ is the phase function that is like the BSDFs of surface rendering.&lt;/p&gt;
+&lt;p&gt;It is scary to understand it at first glance. But there are lot of things we can negelect.&lt;/p&gt;
+&lt;h3 id=&#34;break-down&#34;&gt;Break down&lt;/h3&gt;
+&lt;p&gt;The euqation can be break down to 4 parts abosroption, emission, in-scattering and out-scattering.&lt;/p&gt;
+&lt;p&gt;We can first only consider the absorption part:&lt;/p&gt;
+$$
+\frac{d}{dt}L_1(\mathbb{p}(t), \omega) = -\sigma_a L_1(p(t), \omega) + L_e(p(t),\omega).
+$$&lt;p&gt;This is simply an ODE $ x&#39; = ax + b $, and it have an analytical solution.&lt;/p&gt;
+&lt;p&gt;The in-scattering accounts for all lights bounce between the particles along the ray, its just like rendering equation.&lt;/p&gt;
+$$
+\frac{d}{dt}L_{is}(\mathbb{p}(t)), \omega) = \sigma_s\ p(t) \int_{S_2}\rho(p(t), \omega, \omega&#39; )L(p(t), \omega&#39;)d\omega&#39; $$&lt;p&gt;And the lights also bounce out the ray (lights that is scattered). It is just like the absorption:&lt;/p&gt;
+$$
+\frac{d}{dt}L_{os}(\mathbb{p}(t), \omega) = -\sigma_s L_{os}(p(t)).
+$$&lt;p&gt;So it can also be solved and integrated to the absorption ODE equation.&lt;/p&gt;
+&lt;h3 id=&#34;participanting-media-data-structure&#34;&gt;Participanting Media Data Structure&lt;/h3&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;Data Structure in lajolla&#34; srcset=&#34;
+               /project/cse272_disney/image-1_hu9397655088624780366.webp 400w,
+               /project/cse272_disney/image-1_hu10623996862874536405.webp 760w,
+               /project/cse272_disney/image-1_hu1717314203647437397.webp 1200w&#34;
+               src=&#34;http://localhost:1313/project/cse272_disney/image-1_hu9397655088624780366.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;388&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+&lt;p&gt;Its pretty simple in lajolla of how to get the media information. In each intersection, we record the interior and exterior medium. For the medium, we can get it&amp;rsquo;s sigam_s and sigma_a of position p by some simple search (not using advanced datastructure to accelerate it). Note that we need to handle the ray update carefully at the boundary.&lt;/p&gt;
+&lt;h3 id=&#34;monochromatic-absorption-only-homogeneous-volume&#34;&gt;monochromatic absorption-only homogeneous volume&lt;/h3&gt;
+&lt;p&gt;Nothing special, we solve the absorption part&amp;rsquo;s ode and apply it.&lt;/p&gt;
+$$
+L_1(p(t), \omega) =  e^{-\sigma_a t} * L_e(p(t_{hit}))
+$$&lt;div style=&#34;text-align: center;&#34;&gt;
+    &lt;img src=&#34;image-2.png&#34; alt=&#34;monochromatic absorption-only homogeneous volume&#34; width=&#34;50%&#34;&gt;
+&lt;/div&gt;
+&lt;h3 id=&#34;single-monochromatic-homogeneous-volume-with-absorption-and-single-scattering-no-surface-lighting&#34;&gt;Single monochromatic homogeneous volume with absorption and single-scattering, no surface lighting&lt;/h3&gt;
+$$
+L_{scatter1}(\mathbf{p}, \omega) =
+\int_{\mathcal{M}} \rho(\mathbf{p}(t), \omega, \omega&#39;) L_e(\mathbf{p}&#39;, \omega&#39;)
+\exp(-\sigma_t \|\mathbf{p}(t) - \mathbf{p}&#39;\|) 
+\frac{|\omega&#39; \cdot \mathbf{n}_{\mathbf{p}&#39; }|}{\|\mathbf{p}(t) - \mathbf{p}&#39;\|^2}
+\operatorname{visible}(\mathbf{p}(t), \mathbf{p}&#39;) d\mathbf{p}&#39;,
+$$$$
+\omega&#39; = \frac{p&#39;-p(t)}{||p&#39;-p(t)||} 
+$$&lt;p&gt;So the full rendering euqation is like this:&lt;/p&gt;
+$$
+\frac{d}{dt} L_2(\mathbf{p}(t), \omega) = - \sigma_t L_2(\mathbf{p}(t), \omega) + \sigma_s L_{scatter1}(\mathbf{p}, \omega).
+$$&lt;p&gt;For now, it is no longer an analytical close form with, but we can solve this by simply using Monte Carlo sampling. To do this, we need to make the form of equation more suitable like a rendering euation we have in normal path tracer.&lt;/p&gt;
+$$
+L_2(\mathbf{p}(0), \omega) = \int_{0}^{t_{\text{hit}}} \exp(-\sigma_t t) \sigma_s L_{scatter1}(\mathbf{p}, \omega) \, dt + \exp(-\sigma_t t_{\text{hit}}) L_e(\mathbf{p}(t_{\text{hit}})).
+$$$$C\int_0^t exp(-\sigma_ts)ds = C(-\frac{\exp(-\sigma_t t )}{\sigma_t} + \frac{1}{\sigma_t})$$&lt;p&gt; should $\rightarrow 1$ when $t \rightarrow +\infty$.
+Thus, $C(\frac{1}{\sigma_t}) = 1$. Then, we can get $C = \sigma_t$. So that $p(t)$ should be $\sigma_t exp(-\sigma_ts)$&lt;/p&gt;
+&lt;p&gt;Integrating p(t), we can then get the CDF and solve it we can get our sample function.&lt;/p&gt;
+$$
+t = \frac{log(1-u)}{-\sigma_t}
+$$&lt;p&gt;Also, we need to consider if we sample the distance that is larger than t_hit,  by integrating the larger part. (Equation is in hand out, too trival and lazy to type it here.)&lt;/p&gt;
+&lt;p&gt;By doing this, The result is like following.&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+    &lt;img src=&#34;image-3.png&#34; alt=&#34;Single monochromatic homogeneous volume with absorption and single-scattering, no surface lighting&#34; width=&#34;50%&#34;&gt;
+&lt;/div&gt;
+&lt;p&gt;And the question here asked about the difference of different phase function, I made an simple viusalization:&lt;/p&gt;
+&lt;p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;figure  &gt;
+  &lt;div class=&#34;flex justify-center	&#34;&gt;
+    &lt;div class=&#34;w-100&#34; &gt;&lt;img alt=&#34;alt text&#34; srcset=&#34;
+               /project/cse272_disney/image-4_hu4341111256203962824.webp 400w,
+               /project/cse272_disney/image-4_hu16347955799781603834.webp 760w,
+               /project/cse272_disney/image-4_hu3998451930598326225.webp 1200w&#34;
+               src=&#34;http://localhost:1313/project/cse272_disney/image-4_hu4341111256203962824.webp&#34;
+               width=&#34;760&#34;
+               height=&#34;250&#34;
+               loading=&#34;lazy&#34; data-zoomable /&gt;&lt;/div&gt;
+  &lt;/div&gt;&lt;/figure&gt;
+&lt;/p&gt;
+$$
+p(\cos\theta, g) = \frac{1 - g^2}{4\pi (1 + g^2 + 2g\cos\theta)^{3/2}}
+$$&lt;p&gt;The g controls how concentrate the phase function is and controls how many lights pass through the medium.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&lt;strong&gt;TODO&lt;/strong&gt;&lt;/em&gt;: &lt;em&gt;Equiangular Sampling&lt;/em&gt; implementation and math analyze.&lt;/p&gt;
+&lt;h3 id=&#34;multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-using-only-phase-function-sampling-no-surface-lighting&#34;&gt;Multiple monochromatic homogeneous volumes with absorption and multiple-scattering using only phase function sampling, no surface lighting&lt;/h3&gt;
+&lt;p&gt;Then we want to make the scattering recursive and change the direction, but we only sample the scattering.&lt;/p&gt;
+&lt;p&gt;To implement this, we need to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Sample a distance t&lt;/li&gt;
+&lt;li&gt;Evaluate $L_{scatter}$&lt;/li&gt;
+&lt;li&gt;Sample a new direction&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And we do it recursively. When implementing, we need to update the medium when the ray hit another index-matching surface.&lt;/p&gt;
+&lt;p&gt;This now is a fully MC style process in path tracer and we are familiar with it. We also add a russian roulette here to control the max depth.&lt;/p&gt;
+&lt;h3 id=&#34;multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-with-both-phase-function-sampling-and-next-event-estimation-no-surface-lighting&#34;&gt;Multiple monochromatic homogeneous volumes with absorption and multiple-scattering with both phase function sampling and next event estimation, no surface lighting&lt;/h3&gt;
+&lt;p&gt;BTW, an extremly long name&amp;hellip;&lt;/p&gt;
+&lt;p&gt;now we want to add nee because sampling phase function is very very inefficient. So we want to pick a point on the light and tracing shadow ray (just like we did in path tracer&amp;rsquo;s nee), and get the transmission between them. The process is still easy to understand and simple, if someone is really reading this blog for knowledge, I would recommend to read the handout&amp;rsquo;s pseudo-code and its math.&lt;/p&gt;
+&lt;p&gt;But how do we MIS the nee is interesting, we need to multiply the contribution of the MIS weight $\frac{p^2_{phase}}{p^2_{phase} + p^2_{nee}}$ (If you dont know this, you can review the &lt;a href=&#34;https://cseweb.ucsd.edu/~tzli/cse168/sp2023/lectures/16_multiple_importance_sampling.pdf&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;MIS&amp;rsquo;s knowledge&lt;/a&gt;.)&lt;/p&gt;
+&lt;p&gt;Here our solution is just same as said in handout, we simply store the cumulated pdf and calculated it at the end.&lt;/p&gt;
 </description>
     </item>
     

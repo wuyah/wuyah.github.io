@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: February 23, 2025 --><html lang="en-us" dir="ltr"
+<!-- Last Published: March 11, 2025 --><html lang="en-us" dir="ltr"
       data-wc-theme-default="system">
   
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
@@ -549,6 +549,140 @@
 
 
 
+  
+  
+  <link type="text/css" rel="stylesheet" href="/dist/lib/katex/katex.min.505d5f829022bb7b4f24dfee0aa1141cd7bba67afe411d1240335f820960b5c3.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr&#43;QR0SQDNfgglgtcM=" />
+  
+  
+  <script defer src="/dist/lib/katex/katex.min.dc84b296ec3e884de093158f760fd9d45b6c7abe58b5381557f4e138f46a58ae.js" integrity="sha256-3ISyluw&#43;iE3gkxWPdg/Z1Ftser5YtTgVV/ThOPRqWK4="></script>
+  
+  
+  
+  
+  <script defer src="/js/katex-renderer.6579ec9683211cfb952064aedf3a3baea5eeb17a061775b32b70917474637c80.js" integrity="sha256-ZXnsloMhHPuVIGSu3zo7rqXusXoGF3WzK3CRdHRjfIA="></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
 
 
 
@@ -845,7 +979,7 @@
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/project/cse272/"
+    href="/project/cse272_disney/"
     
   >Disney BSDF - UCSD CSE 272
     </a>
@@ -1135,7 +1269,35 @@
 <p>Thanks to Prof. Chin, I learned a lot from this course by praticing in the projects and analising the reasons behind the experiments&rsquo; results</p>
 <hr>
 <h2 id="project-1-optimizing-matrix-multiplication-with-cpu-vectorization">Project 1: Optimizing Matrix Multiplication with CPU Vectorization</h2>
-<p>In this project, we optimized matrix multiplication by leveraging CPU vector extensions such as Intel&rsquo;s AVX and ARM&rsquo;s SVE to enhance computational throughput.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="alt text" srcset="
+               /project/cse260/image-3_hu9367625775072898446.webp 400w,
+               /project/cse260/image-3_hu17786200574989343527.webp 760w,
+               /project/cse260/image-3_hu14680535611392509213.webp 1200w"
+               src="/project/cse260/image-3_hu9367625775072898446.webp"
+               width="760"
+               height="456"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+In this project, we optimized matrix multiplication by leveraging CPU vector extensions such as Intel&rsquo;s AVX and ARM&rsquo;s SVE to enhance computational throughput.</p>
 <p><strong>Techniques Employed</strong>:</p>
 <ul>
 <li><strong>Cache Blocking</strong>: Divided matrices into smaller blocks to fit into the CPU cache, reducing memory access latency.</li>
@@ -1148,7 +1310,35 @@
 </ul>
 <hr>
 <h2 id="project-2-accelerating-matrix-multiplication-with-cuda">Project 2: Accelerating Matrix Multiplication with CUDA</h2>
-<p>This project focused on implementing matrix multiplication on NVIDIA GPUs using CUDA to exploit massive parallelism and achieve high computational throughput.</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="alt text" srcset="
+               /project/cse260/image-4_hu15383316976014161530.webp 400w,
+               /project/cse260/image-4_hu11406393982847062270.webp 760w,
+               /project/cse260/image-4_hu17418213089925729560.webp 1200w"
+               src="/project/cse260/image-4_hu15383316976014161530.webp"
+               width="512"
+               height="229"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+
+This project focused on implementing matrix multiplication on NVIDIA GPUs using CUDA to exploit massive parallelism and achieve high computational throughput.</p>
 <p><strong>Approach</strong>:</p>
 <ul>
 <li><strong>Tiling and Shared Memory</strong>: Implemented tiling strategies to load matrix sub-blocks into shared memory, minimizing global memory access.</li>
@@ -1162,7 +1352,13 @@
 <p><em>CUDA Performance Graph Placeholder</em> <!-- Include a graph comparing CUDA performance metrics --></p>
 <hr>
 <h2 id="project-3-distributed-wave-simulation-with-mpi">Project 3: Distributed Wave Simulation with MPI</h2>
-<p>In this project, we developed a wave propagation simulation using MPI to distribute computations across multiple processors, enhancing scalability and performance.</p>
+<!-- ![alt text](image.png)![alt text](image-1.png)![alt text](image-2.png) -->
+<div style="display: flex; justify-content: center;">
+  <img src="image.png" alt="Image 1" width="30%">
+  <img src="image-1.png" alt="Image 2" width="30%">
+  <img src="image-2.png" alt="Image 3" width="30%">
+</div>
+In this project, we developed a wave propagation simulation using MPI to distribute computations across multiple processors, enhancing scalability and performance.
 <p><strong>Methodology</strong>:</p>
 <ul>
 <li><strong>Domain Decomposition</strong>: Partitioned the simulation domain among processors to balance computational load.</li>

@@ -142,20 +142,20 @@ Conformal mapping ensures that texture coordinates applied to a 3D surface prese
 
 #### **Implementation in Houdini**
 1. **Laplacian and Area Matrices:**
-   - The Laplacian matrix (\(L\)) and area matrix (\(A\)) were precomputed using sparse matrix operations. The combined conformal matrix (\(C\)) was derived as:
+   The Laplacian matrix (\(L\)) and area matrix (\(A\)) were precomputed using sparse matrix operations. The combined conformal matrix (\(C\)) was derived as:
      \[
      C = \frac{1}{2} L - A
      \]
      They are same as what we did in section 1.
 
 2. **Eigenvalue Solver:**
-   - Using a spectral solver, the smallest nonzero eigenvalue and its corresponding eigenvector were computed. This eigenvector defines the conformal map.
+   Using a spectral solver, the smallest nonzero eigenvalue and its corresponding eigenvector were computed. This eigenvector defines the conformal map.
 
 3. **Texture Coordinates:**
-   - The real and imaginary parts of the solution were assigned as \(u\) and \(v\) attributes to the mesh points. These attributes define the conformal texture map.
+   The real and imaginary parts of the solution were assigned as \(u\) and \(v\) attributes to the mesh points. These attributes define the conformal texture map.
 
 4. **Visualization:**
-   - Houdini's and texture shaders and displacement shader were used to preview the conformal map and apply textures without distortion.
+   Houdini's texture shaders and displacement shader were used to preview the conformal map and apply textures without distortion.
 
 #### **Result**
 

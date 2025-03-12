@@ -1,0 +1,1997 @@
+<!doctype html>
+<!-- This site was created with Hugo Blox. https://hugoblox.com -->
+<!-- Last Published: March 11, 2025 --><html lang="en-us" dir="ltr"
+      data-wc-theme-default="system">
+  
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="generator" content="Hugo Blox Builder 0.3.1" />
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Zenan Li" />
+
+  
+  
+  
+    
+  
+  <meta name="description" content="Implemented Disney BSDF based on lajolla renderer in cse272" />
+
+  
+  <link rel="alternate" hreflang="en-us" href="http://localhost:1313/project/cse272_disney/" />
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="/css/themes/emerald.min.css" />
+  
+
+  
+  
+    
+    <link href="/dist/wc.min.css" rel="stylesheet" />
+  
+
+  
+  
+  
+
+  
+
+  <script>
+     
+    window.hbb = {
+       defaultTheme: document.documentElement.dataset.wcThemeDefault,
+       setDarkTheme: () => {
+        document.documentElement.classList.add("dark");
+        document.documentElement.style.colorScheme = "dark";
+      },
+       setLightTheme: () => {
+        document.documentElement.classList.remove("dark");
+        document.documentElement.style.colorScheme = "light";
+      }
+    }
+
+    console.debug(`Default Hugo Blox Builder theme is ${window.hbb.defaultTheme}`);
+
+    if ("wc-color-theme" in localStorage) {
+      localStorage.getItem("wc-color-theme") === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+    } else {
+      window.hbb.defaultTheme === "dark" ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      if (window.hbb.defaultTheme === "system") {
+        window.matchMedia("(prefers-color-scheme: dark)").matches ? window.hbb.setDarkTheme() : window.hbb.setLightTheme();
+      }
+    }
+  </script>
+
+  <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+      
+      let checkboxes = document.querySelectorAll('li input[type=\'checkbox\'][disabled]');
+      checkboxes.forEach(e => {
+        e.parentElement.parentElement.classList.add('task-list');
+      });
+
+      
+      const liNodes = document.querySelectorAll('.task-list li');
+      liNodes.forEach(nodes => {
+        let textNodes = Array.from(nodes.childNodes).filter(node => node.nodeType === 3 && node.textContent.trim().length > 1);
+        if (textNodes.length > 0) {
+          const span = document.createElement('label');
+          textNodes[0].after(span);  
+          span.appendChild(nodes.querySelector('input[type=\'checkbox\']'));
+          span.appendChild(textNodes[0]);
+        }
+      });
+    });
+  </script>
+
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+  
+  <link rel="icon" type="image/png" href="/media/icon_hu3247630877640252165.png" />
+  <link rel="apple-touch-icon" type="image/png" href="/media/icon_hu4166356570829923896.png" />
+
+  <link rel="canonical" href="http://localhost:1313/project/cse272_disney/" />
+
+  
+  
+  
+  
+  
+  
+  
+  
+    
+  
+  
+
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary_large_image" />
+  
+    <meta property="twitter:site" content="@GetResearchDev" />
+    <meta property="twitter:creator" content="@GetResearchDev" />
+  
+  <meta property="og:site_name" content="Zenan Li&#39;s site" />
+  <meta property="og:url" content="http://localhost:1313/project/cse272_disney/" />
+  <meta property="og:title" content="Disney BSDF - UCSD CSE 272 | Zenan Li&#39;s site" />
+  <meta property="og:description" content="Implemented Disney BSDF based on lajolla renderer in cse272" /><meta property="og:image" content="http://localhost:1313/project/cse272_disney/featured.jpeg" />
+    <meta property="twitter:image" content="http://localhost:1313/project/cse272_disney/featured.jpeg" /><meta property="og:locale" content="en-us" />
+  
+    
+      <meta
+        property="article:published_time"
+        content="2024-12-25T00:00:00&#43;00:00"
+      />
+    
+    <meta property="article:modified_time" content="2024-12-25T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "http://localhost:1313/project/cse272_disney/"
+  },
+  "headline": "Disney BSDF - UCSD CSE 272",
+  
+  "image": [
+    "http://localhost:1313/project/cse272_disney/featured.jpeg"
+  ],
+  
+  "datePublished": "2024-12-25T00:00:00Z",
+  "dateModified": "2024-12-25T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "Zenan Li"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Zenan Li's site",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "http://localhost:1313/media/icon_hu17980401698969639728.png"
+    }
+  },
+  "description": "Implemented Disney BSDF based on lajolla renderer in cse272"
+}
+</script>
+
+  
+
+  
+
+
+  <title>Disney BSDF - UCSD CSE 272 | Zenan Li&#39;s site</title>
+
+  
+  
+  
+  
+  
+    
+    
+  
+  
+  <style>
+    @font-face {
+      font-family: 'Inter var';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url(/dist/font/Inter.var.woff2) format(woff2);
+    }
+  </style>
+
+  
+
+  
+  
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+      
+      
+    
+      
+      
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        
+        
+      
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+<link type="text/css" rel="stylesheet" href="/dist/pagefind/pagefind-ui.be766eb419317a14ec769d216e9779bfe8f3737c80e780f4ba0dafb57a41a482.css" integrity="sha256-vnZutBkxehTsdp0hbpd5v&#43;jzc3yA54D0ug2vtXpBpII=" />
+
+
+<script src="/dist/pagefind/pagefind-ui.87693d7c6f2b3b347ce359d0ede762c033419f0a32b22ce508c335a81d841f1b.js" integrity="sha256-h2k9fG8rOzR841nQ7ediwDNBnwoysizlCMM1qB2EHxs="></script>
+
+
+<script>window.hbb.pagefind = {"baseUrl":"/"};</script>
+
+<style>
+  html.dark {
+    --pagefind-ui-primary: #eeeeee;
+    --pagefind-ui-text: #eeeeee;
+    --pagefind-ui-background: #152028;
+    --pagefind-ui-border: #152028;
+    --pagefind-ui-tag: #152028;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    new PagefindUI({
+      element: "#search",
+      showSubResults: true,
+      baseUrl: window.hbb.pagefind.baseUrl,
+      bundlePath: window.hbb.pagefind.baseUrl + "pagefind/",
+    });
+  });
+  document.addEventListener('DOMContentLoaded', () => {
+    let element = document.getElementById('search');
+    let trigger = document.getElementById('search_toggle');
+
+    if (trigger) {
+      trigger.addEventListener('click', () => {
+        element.classList.toggle('hidden');
+        element.querySelector("input").value = ""
+        element.querySelector("input").focus()
+
+        if (!element.classList.contains('hidden')) {
+          let clear_trigger = document.querySelector('.pagefind-ui__search-clear');
+
+          if (clear_trigger && !clear_trigger.hasAttribute('listenerOnClick')) {
+            clear_trigger.setAttribute('listenerOnClick', 'true');
+
+            clear_trigger.addEventListener('click', () => {
+              element.classList.toggle('hidden');
+            });
+          }
+        }
+
+      });
+    }
+  });
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link type="text/css" rel="stylesheet" href="/dist/lib/katex/katex.min.505d5f829022bb7b4f24dfee0aa1141cd7bba67afe411d1240335f820960b5c3.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr&#43;QR0SQDNfgglgtcM=" />
+  
+  
+  <script defer src="/dist/lib/katex/katex.min.dc84b296ec3e884de093158f760fd9d45b6c7abe58b5381557f4e138f46a58ae.js" integrity="sha256-3ISyluw&#43;iE3gkxWPdg/Z1Ftser5YtTgVV/ThOPRqWK4="></script>
+  
+  
+  
+  
+  <script defer src="/js/katex-renderer.6579ec9683211cfb952064aedf3a3baea5eeb17a061775b32b70917474637c80.js" integrity="sha256-ZXnsloMhHPuVIGSu3zo7rqXusXoGF3WzK3CRdHRjfIA="></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  <script
+    defer
+    src="/js/hugo-blox-en.min.js"
+    integrity=""
+  ></script>
+
+  
+  
+
+
+
+
+
+
+
+
+  
+    
+      
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+      
+    
+  
+
+
+
+
+</head>
+
+  <body class="dark:bg-hb-dark dark:text-white page-wrapper" id="top">
+    <div id="page-bg"></div>
+    <div class="page-header sticky top-0 z-30">
+      
+      
+      
+        
+        
+        
+          <header id="site-header" class="header">
+  <nav class="navbar px-3 flex justify-left">
+    <div class="order-0 h-100">
+      
+      <a class="navbar-brand" href="/" title="Zenan Li&#39;s site">
+        Zenan Li
+      </a>
+    </div>
+    
+    <input id="nav-toggle" type="checkbox" class="hidden" />
+    <label
+      for="nav-toggle"
+      class="order-3 cursor-pointer flex items-center lg:hidden text-dark dark:text-white lg:order-1">
+      <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
+        <title>Open Menu</title>
+        <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+      </svg>
+      <svg id="hide-button" class="h-6 fill-current hidden" viewBox="0 0 20 20">
+        <title>Close Menu</title>
+        <polygon
+          points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+          transform="rotate(45 10 10)"></polygon>
+      </svg>
+    </label>
+    
+
+    
+    
+    <ul
+      id="nav-menu"
+      class="navbar-nav order-3 hidden lg:flex w-full pb-6 lg:order-1 lg:w-auto lg:space-x-2 lg:pb-0 xl:space-x-8 justify-left
+      ">
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/"
+        >Bio</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/experience/"
+        >Experience</a
+        >
+      </li>
+      
+      
+      
+      
+      
+      
+      <li class="nav-item">
+        <a
+          class="nav-link "
+          
+          href="/projects/"
+        >Projects</a
+        >
+      </li>
+      
+      
+      
+    </ul>
+
+    <div class="order-1 ml-auto flex items-center md:order-2 lg:ml-0">
+
+      
+      
+      
+      <button
+        aria-label="search"
+        class="text-black hover:text-primary  inline-block px-3 text-xl dark:text-white"
+        id="search_toggle">
+        <svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+      </button>
+      
+
+      
+      
+      <div class="px-3 text-black hover:text-primary-700 dark:text-white dark:hover:text-primary-300
+            [&.active]:font-bold [&.active]:text-black/90 dark:[&.active]:text-white">
+        <button class="theme-toggle mt-1" accesskey="t" title="appearance">
+          <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class="dark:hidden">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+               fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round" class=" dark:block [&:not(dark)]:hidden">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+      </div>
+      
+
+      
+      
+
+      
+      
+    </div>
+  </nav>
+</header>
+
+
+<div id="search" class="hidden p-3"></div>
+
+
+        
+      
+    </div>
+    <div class="page-body  my-10">
+      
+
+
+
+
+
+<div class="mx-auto flex max-w-screen-xl">
+  
+
+
+
+<aside class="hb-sidebar-container max-lg:[transform:translate3d(0,-100%,0)] lg:hidden xl:block">
+  
+  <div class="px-4 pt-4 lg:hidden">
+    
+    
+  </div>
+  <div class="hb-scrollbar lg:h-[calc(100vh-var(--navbar-height))]">
+    <ul class="flex flex-col gap-1 lg:hidden">
+      
+      
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/"
+    
+  >Recent &amp; Upcoming Talks
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/event/example/"
+    
+  >Example Talk
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class="open"><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/"
+    
+  >Blog
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/cse260/"
+    
+  >CSE260 - Parallel Computing Portfolio
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/cse270/"
+    
+  >CSE270 - Discret Differential Geometry
+    </a>
+              
+            </li><li class="flex flex-col open"><a
+    class="hb-sidebar-custom-link
+      sidebar-active-item bg-primary-100 font-semibold text-primary-800 dark:bg-primary-300 dark:text-primary-900"
+    href="/project/cse272_disney/"
+    
+  >Disney BSDF - UCSD CSE 272
+    </a>
+  
+    <ul class="hb-sidebar-mobile-toc"><li>
+              <a
+                href="#disney-principled-bsdf"
+                class="hb-docs-link"
+              >Disney Principled BSDF</a>
+            </li>
+          <li>
+              <a
+                href="#volumetric-rendering"
+                class="hb-docs-link"
+              >Volumetric Rendering</a>
+            </li>
+          </ul>
+  
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/project/shadertoy/"
+    
+  >Shader Toy Demo from NUS
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/projects/"
+    
+  >Projects
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/"
+    
+  >Blog
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/get-started/"
+    
+  >🎉 Easily create your own simple yet highly customizable blog
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/second-brain/"
+    
+  >🧠 Sharpen your thinking with a second brain
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/data-visualization/"
+    
+  >📈 Communicate your results effectively with the best data visualizations
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/teach-courses/"
+    
+  >👩🏼‍🏫 Teach academic courses
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/post/project-management/"
+    
+  >✅ Manage your projects
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/experience/"
+    
+  >Experience
+    </a></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/"
+    
+  >Teaching
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/js/"
+    
+  >Learn JavaScript
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/teaching/python/"
+    
+  >Learn Python
+    </a>
+              
+            </li></ul>
+      </div></li>
+        <li class=""><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/"
+    
+  >Publications
+        <span data-hb-sidebar-toggle>
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-[18px] min-w-[18px] rounded-sm p-0.5 hover:bg-gray-800/5 dark:hover:bg-gray-100/5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" class="origin-center transition-transform rtl:-rotate-180"></path></svg>
+        </span>
+    </a><div class="ltr:pr-0 overflow-hidden">
+        <ul class="hb-sidebar-list"><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/preprint/"
+    
+  >An example preprint / working paper
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/journal-article/"
+    
+  >An example journal article
+    </a>
+              
+            </li><li class="flex flex-col "><a
+    class="hb-sidebar-custom-link
+      text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
+    href="/publication/conference-paper/"
+    
+  >An example conference paper
+    </a>
+              
+            </li></ul>
+      </div></li>
+    </ul>
+
+    <div class="max-xl:hidden h-0 w-64 shrink-0"></div></div>
+
+</aside>
+  
+
+<nav class="hb-toc order-last hidden w-64 shrink-0 xl:block print:hidden px-4" aria-label="table of contents">
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div class="hb-scrollbar text-sm [hyphens:auto] sticky top-16 overflow-y-auto pr-4 pt-6 max-h-[calc(100vh-var(--navbar-height)-env(safe-area-inset-bottom))] -mr-4 rtl:-ml-4"><p class="mb-4 font-semibold tracking-tight">On this page</p><ul>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#disney-principled-bsdf">Disney Principled BSDF</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="font-semibold inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#volumetric-rendering">Volumetric Rendering</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#volume-rendering-equation">Volume Rendering Equation</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#break-down">Break down</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#participanting-media-data-structure">Participanting Media Data Structure</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#monochromatic-absorption-only-homogeneous-volume">monochromatic absorption-only homogeneous volume</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#single-monochromatic-homogeneous-volume-with-absorption-and-single-scattering-no-surface-lighting">Single monochromatic homogeneous volume with absorption and single-scattering, no surface lighting</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-using-only-phase-function-sampling-no-surface-lighting">Multiple monochromatic homogeneous volumes with absorption and multiple-scattering using only phase function sampling, no surface lighting</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-with-both-phase-function-sampling-and-next-event-estimation-no-surface-lighting">Multiple monochromatic homogeneous volumes with absorption and multiple-scattering with both phase function sampling and next event estimation, no surface lighting</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-with-both-phase-unction-sampling-and-next-event-estimation-with-surface-lighting">Multiple monochromatic homogeneous volumes with absorption and multiple-scattering with both phase unction sampling and next event estimation, with surface lighting</a>
+      </li>
+      <li class="my-2 scroll-my-6 scroll-py-6">
+        <a class="pl-4 rtl:pr-4 inline-block text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-300 w-full break-words" href="#multiple-chromatic-heterogeneous-volumes-with-absorption-and-multiple-scattering-with-both-phase-function-sampling-and-next-event-estimation-with-surface-lighting">Multiple chromatic heterogeneous volumes with absorption and multiple-scattering with both phase function sampling and next event estimation, with surface lighting</a>
+      </li></ul>
+
+  
+  
+    
+    
+  
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+  </nav>
+
+
+  <article class="w-full break-words flex min-h-[calc(100vh-var(--navbar-height))] min-w-0 justify-center pb-8 pr-[calc(env(safe-area-inset-right)-1.5rem)]">
+    <main class="w-full min-w-0 max-w-6xl px-6 pt-4 md:px-12">
+
+      
+
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-slate-900 dark:text-slate-100">Disney BSDF - UCSD CSE 272</h1>
+
+      <div class="mt-4 mb-16">
+      <div class="text-gray-500 dark:text-gray-300 text-sm flex items-center flex-wrap gap-y-2"><span class="mr-1">Dec 25, 2024</span><span class="mx-1">·</span>
+        
+          
+          
+          <div class="group inline-flex items-center text-current gap-x-1.5 mx-1">
+            
+            
+            <img src="/author/zenan-li/avatar_hu4242709228464579242.webp" alt="Zenan Li" class="inline-block h-4 w-4 rounded-full border border-current" loading="lazy" />
+            
+            <div >Zenan Li</div>
+          </div>
+          
+        
+
+        
+        <span class="mx-1">·</span>
+        <span class="mx-1">
+          9 min read
+        </span>
+        
+        </div>
+
+        <div class="mt-3">
+          
+
+
+
+
+
+        </div>
+      </div>
+
+
+
+      
+      
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <div class="article-header article-container featured-image-wrapper mt-4 mb-16" style="max-width: 720px; max-height: 540px;">
+        <div style="position: relative">
+          <img src="/project/cse272_disney/featured_hu13794390509324955581.webp" width="720" height="540" alt="" class="featured-image">
+          
+        </div>
+      </div>
+      
+
+      
+      
+
+      <div class="prose prose-slate lg:prose-xl dark:prose-invert">
+        
+
+
+<details class="print:hidden xl:hidden" open>
+  <summary>Table of Contents</summary>
+  <div class="text-sm">
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#disney-principled-bsdf">Disney Principled BSDF</a></li>
+    <li><a href="#volumetric-rendering">Volumetric Rendering</a>
+      <ul>
+        <li><a href="#volume-rendering-equation">Volume Rendering Equation</a></li>
+        <li><a href="#break-down">Break down</a></li>
+        <li><a href="#participanting-media-data-structure">Participanting Media Data Structure</a></li>
+        <li><a href="#monochromatic-absorption-only-homogeneous-volume">monochromatic absorption-only homogeneous volume</a></li>
+        <li><a href="#single-monochromatic-homogeneous-volume-with-absorption-and-single-scattering-no-surface-lighting">Single monochromatic homogeneous volume with absorption and single-scattering, no surface lighting</a></li>
+        <li><a href="#multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-using-only-phase-function-sampling-no-surface-lighting">Multiple monochromatic homogeneous volumes with absorption and multiple-scattering using only phase function sampling, no surface lighting</a></li>
+        <li><a href="#multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-with-both-phase-function-sampling-and-next-event-estimation-no-surface-lighting">Multiple monochromatic homogeneous volumes with absorption and multiple-scattering with both phase function sampling and next event estimation, no surface lighting</a></li>
+        <li><a href="#multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-with-both-phase-unction-sampling-and-next-event-estimation-with-surface-lighting">Multiple monochromatic homogeneous volumes with absorption and multiple-scattering with both phase unction sampling and next event estimation, with surface lighting</a></li>
+        <li><a href="#multiple-chromatic-heterogeneous-volumes-with-absorption-and-multiple-scattering-with-both-phase-function-sampling-and-next-event-estimation-with-surface-lighting">Multiple chromatic heterogeneous volumes with absorption and multiple-scattering with both phase function sampling and next event estimation, with surface lighting</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</details>
+
+<h2 id="disney-principled-bsdf">Disney Principled BSDF</h2>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="Result of disney bsdf." srcset="
+               /project/cse272_disney/disney_bsdf_array_hu14580244296769990818.webp 400w,
+               /project/cse272_disney/disney_bsdf_array_hu15282263902990540985.webp 760w,
+               /project/cse272_disney/disney_bsdf_array_hu18050512559318829935.webp 1200w"
+               src="/project/cse272_disney/disney_bsdf_array_hu14580244296769990818.webp"
+               width="760"
+               height="570"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Original handouts: <a href="https://cseweb.ucsd.edu/~tzli/cse272/wi2025/homework1.pdf" target="_blank" rel="noopener">CSE 272 Homework1</a></p>
+<p>This is a reproduction of a siggraph 2012 talk <a href="https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf" target="_blank" rel="noopener">Physically-Based Shading at Disney</a>. This shading model also implemented in Blender. And the lajolla renderer is capable of rendering scenes exported from Blender that have principled material.</p>
+<p>The shading model contains 5 lobes, diffuse, metal, glass, clearcoat and sheen and we sample the lobes based on the principled parameters to make it efficient. For more details, please refer to the handout.</p>
+<h2 id="volumetric-rendering">Volumetric Rendering</h2>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="Result of a heterogeneous volume with a spectrally varying density over space, rendered
+with multiple-scattering" srcset="
+               /project/cse272_disney/image_hu10412752157451466589.webp 400w,
+               /project/cse272_disney/image_hu5360276216743737642.webp 760w,
+               /project/cse272_disney/image_hu10526316202108566866.webp 1200w"
+               src="/project/cse272_disney/image_hu10412752157451466589.webp"
+               width="760"
+               height="570"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Implemented a Volume Renderer in lajolla.</p>
+<p>The following things are simply same as the handout2&rsquo;s pdf. I write them just for myself for a quicker and better review. (So in the future I can quickly unsderstand what I&rsquo;ve done. :&gt; )</p>
+<h3 id="volume-rendering-equation">Volume Rendering Equation</h3>
+$$
+\frac{d}{dt}L(\mathbb{p}(t)), \omega) = -(\sigma_a\ p(t) + \sigma_s\ p(t) )L(p(t), \omega) + L_e(p(t), \omega) + \sigma_s\ p(t) \int_{S_2}\rho(p(t), \omega, \omega' )L(p(t), \omega')d\omega' $$<p>Here $L$ is luminance, $p$ is distance function, $\sigma_\alpha$ is absorption coefficient, $\sigma_s$ is the scattering coefficient. And $\rho$ is the phase function that is like the BSDFs of surface rendering.</p>
+<p>It is scary to understand it at first glance. But there are lot of things we can negelect.</p>
+<h3 id="break-down">Break down</h3>
+<p>The euqation can be break down to 4 parts abosroption, emission, in-scattering and out-scattering.</p>
+<p>We can first only consider the absorption part:</p>
+$$
+\frac{d}{dt}L_1(\mathbb{p}(t), \omega) = -\sigma_a L_1(p(t), \omega) + L_e(p(t),\omega).
+$$<p>This is simply an ODE $ x' = ax + b $, and it have an analytical solution.</p>
+<p>The in-scattering accounts for all lights bounce between the particles along the ray, its just like rendering equation.</p>
+$$
+\frac{d}{dt}L_{is}(\mathbb{p}(t)), \omega) = \sigma_s\ p(t) \int_{S_2}\rho(p(t), \omega, \omega' )L(p(t), \omega')d\omega' $$<p>And the lights also bounce out the ray (lights that is scattered). It is just like the absorption:</p>
+$$
+\frac{d}{dt}L_{os}(\mathbb{p}(t), \omega) = -\sigma_s L_{os}(p(t)).
+$$<p>So it can also be solved and integrated to the absorption ODE equation.</p>
+<h3 id="participanting-media-data-structure">Participanting Media Data Structure</h3>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="Data Structure in lajolla" srcset="
+               /project/cse272_disney/image-1_hu9397655088624780366.webp 400w,
+               /project/cse272_disney/image-1_hu10623996862874536405.webp 760w,
+               /project/cse272_disney/image-1_hu1717314203647437397.webp 1200w"
+               src="/project/cse272_disney/image-1_hu9397655088624780366.webp"
+               width="760"
+               height="388"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+<p>Its pretty simple in lajolla of how to get the media information. In each intersection, we record the interior and exterior medium. For the medium, we can get it&rsquo;s sigam_s and sigma_a of position p by some simple search (not using advanced datastructure to accelerate it). Note that we need to handle the ray update carefully at the boundary.</p>
+<h3 id="monochromatic-absorption-only-homogeneous-volume">monochromatic absorption-only homogeneous volume</h3>
+<p>Nothing special, we solve the absorption part&rsquo;s ode and apply it.</p>
+$$
+L_1(p(t), \omega) =  e^{-\sigma_a t} * L_e(p(t_{hit}))
+$$<div style="text-align: center;">
+    <img src="image-2.png" alt="monochromatic absorption-only homogeneous volume" width="50%">
+</div>
+<h3 id="single-monochromatic-homogeneous-volume-with-absorption-and-single-scattering-no-surface-lighting">Single monochromatic homogeneous volume with absorption and single-scattering, no surface lighting</h3>
+$$
+L_{scatter1}(\mathbf{p}, \omega) =
+\int_{\mathcal{M}} \rho(\mathbf{p}(t), \omega, \omega') L_e(\mathbf{p}', \omega')
+\exp(-\sigma_t \|\mathbf{p}(t) - \mathbf{p}'\|) 
+\frac{|\omega' \cdot \mathbf{n}_{\mathbf{p}' }|}{\|\mathbf{p}(t) - \mathbf{p}'\|^2}
+\operatorname{visible}(\mathbf{p}(t), \mathbf{p}') d\mathbf{p}',
+$$$$
+\omega' = \frac{p'-p(t)}{||p'-p(t)||} 
+$$<p>So the full rendering euqation is like this:</p>
+$$
+\frac{d}{dt} L_2(\mathbf{p}(t), \omega) = - \sigma_t L_2(\mathbf{p}(t), \omega) + \sigma_s L_{scatter1}(\mathbf{p}, \omega).
+$$<p>For now, it is no longer an analytical close form with, but we can solve this by simply using Monte Carlo sampling. To do this, we need to make the form of equation more suitable like a rendering euation we have in normal path tracer.</p>
+$$
+L_2(\mathbf{p}(0), \omega) = \int_{0}^{t_{\text{hit}}} \exp(-\sigma_t t) \sigma_s L_{scatter1}(\mathbf{p}, \omega) \, dt + \exp(-\sigma_t t_{\text{hit}}) L_e(\mathbf{p}(t_{\text{hit}})).
+$$$$C\int_0^t exp(-\sigma_ts)ds = C(-\frac{\exp(-\sigma_t t )}{\sigma_t} + \frac{1}{\sigma_t})$$<p> should $\rightarrow 1$ when $t \rightarrow +\infty$.
+Thus, $C(\frac{1}{\sigma_t}) = 1$. Then, we can get $C = \sigma_t$. So that $p(t)$ should be $\sigma_t exp(-\sigma_ts)$</p>
+<p>Integrating p(t), we can then get the CDF and solve it we can get our sample function.</p>
+$$
+t = \frac{log(1-u)}{-\sigma_t}
+$$<p>Also, we need to consider if we sample the distance that is larger than t_hit,  by integrating the larger part. (Equation is in hand out, too trival and lazy to type it here.)</p>
+<p>By doing this, The result is like following.</p>
+<div style="text-align: center;">
+    <img src="image-3.png" alt="Single monochromatic homogeneous volume with absorption and single-scattering, no surface lighting" width="50%">
+</div>
+<p>And the question here asked about the difference of different phase function, I made an simple viusalization:</p>
+<p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<figure  >
+  <div class="flex justify-center	">
+    <div class="w-100" ><img alt="alt text" srcset="
+               /project/cse272_disney/image-4_hu8355055618840476604.webp 400w,
+               /project/cse272_disney/image-4_hu16347955799781603834.webp 760w,
+               /project/cse272_disney/image-4_hu3998451930598326225.webp 1200w"
+               src="/project/cse272_disney/image-4_hu8355055618840476604.webp"
+               width="760"
+               height="250"
+               loading="lazy" data-zoomable /></div>
+  </div></figure>
+</p>
+$$
+p(\cos\theta, g) = \frac{1 - g^2}{4\pi (1 + g^2 + 2g\cos\theta)^{3/2}}
+$$<p>The g controls how concentrate the phase function is and controls how many lights pass through the medium.</p>
+<p><em><strong>TODO</strong></em>: <em>Equiangular Sampling</em> implementation and math analyze.</p>
+<h3 id="multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-using-only-phase-function-sampling-no-surface-lighting">Multiple monochromatic homogeneous volumes with absorption and multiple-scattering using only phase function sampling, no surface lighting</h3>
+<p>Then we want to make the scattering recursive and change the direction, but we only sample the scattering.</p>
+<p>To implement this, we need to:</p>
+<ol>
+<li>Sample a distance t</li>
+<li>Evaluate $L_{scatter}$</li>
+<li>Sample a new direction</li>
+</ol>
+<p>And we do it recursively. When implementing, we need to update the medium when the ray hit another index-matching surface.</p>
+<p>This now is a fully MC style process in path tracer and we are familiar with it. We also add a russian roulette here to control the max depth.</p>
+<h3 id="multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-with-both-phase-function-sampling-and-next-event-estimation-no-surface-lighting">Multiple monochromatic homogeneous volumes with absorption and multiple-scattering with both phase function sampling and next event estimation, no surface lighting</h3>
+<p>BTW, an extremly long name&hellip;</p>
+<p>now we want to add nee because sampling phase function is very very inefficient. So we want to pick a point on the light and tracing shadow ray (just like we did in path tracer&rsquo;s nee), and get the transmission between them. The process is still easy to understand and simple, if someone is really reading this blog for knowledge, I would recommend to read the handout&rsquo;s pseudo-code and its math.</p>
+<p>But how do we MIS the nee is interesting, we need to multiply the contribution of the MIS weight $\frac{p^2_{phase}}{p^2_{phase} + p^2_{nee}}$ (If you dont know this, you can review the <a href="https://cseweb.ucsd.edu/~tzli/cse168/sp2023/lectures/16_multiple_importance_sampling.pdf" target="_blank" rel="noopener">MIS&rsquo;s knowledge</a>.)</p>
+<p>Here our solution is just same as said in handout, we simply store the cumulated pdf and calculated it at the end.</p>
+<div style="text-align: center;">
+    <img src="image-5.png" alt="Multiple monochromatic homogeneous" width="50%">
+</div>
+<h3 id="multiple-monochromatic-homogeneous-volumes-with-absorption-and-multiple-scattering-with-both-phase-unction-sampling-and-next-event-estimation-with-surface-lighting">Multiple monochromatic homogeneous volumes with absorption and multiple-scattering with both phase unction sampling and next event estimation, with surface lighting</h3>
+<p>Now we add surface lighting to our volume pathtracer, it is still easy to integrate, we just need to everywhere we sample or evaluate, determine it is a BSDF surface or a medium, using nee like what we did in normal path tracer and we got our result. By far, we can get something that is fancy. Like a cornel box with volume</p>
+<div style="text-align: center;">
+    <img src="image-6.png" alt="Cornel box" width="50%">
+</div>
+<h3 id="multiple-chromatic-heterogeneous-volumes-with-absorption-and-multiple-scattering-with-both-phase-function-sampling-and-next-event-estimation-with-surface-lighting">Multiple chromatic heterogeneous volumes with absorption and multiple-scattering with both phase function sampling and next event estimation, with surface lighting</h3>
+<p>Actually this part is what I want to review it most since when implementing, I simply followed the instructions and didn&rsquo;t get the math behind. So lets do more math!</p>
+<p>Let&rsquo;s now focus on the heterogeneous media and see the radiative transfer equation (no volume emission):</p>
+$$
+\frac{d}{dt} L(\mathbf{p}(t), \omega) = -\sigma_t (\mathbf{p}(t)) L(\mathbf{p}(t), \omega) + \sigma_s (\mathbf{p}(t)) \int_{S^2} \rho(\omega, \omega') L(\mathbf{p}(t), \omega') d\omega',
+$$<p>This is still same as we mentioned before, but is more complete.</p>
+<p>We can then integrate the equation like we have done before:</p>
+$$
+L(\mathbf{p}(t), \omega) = \int_{0}^{t_{\text{hit}}} T(\mathbf{p}(0), \mathbf{p}(t')) \left( \sigma_s (\mathbf{p}(t')) \int_{S^2} \rho(\omega, \omega') L(\mathbf{p}(t'), \omega') d\omega' \right) dt' + T(\mathbf{p}(0), \mathbf{p}(t_{\text{hit}})) L_{\text{surface}} (\mathbf{p}(t_{\text{hit}})),
+$$<p>Where $T$ is:</p>
+$$
+T(\mathbf{p}(0), \mathbf{p}(t')) = \exp \left( - \int_{0}^{t'} \sigma_t (\mathbf{p}(t'')) dt'' \right).
+$$<blockquote>
+<p>This is basicaly same with what we have calculated before. The only problem is that we now need to sample the $t$!</p>
+</blockquote>
+<p>Here, $T$ is the transmittance that we have calculated, When it is homogeneous, we can calculate its closed-form because it is same every where and we can integrate it analyticaly. But now it is heterogenerous, so we can only solve this problem through Monte-Carlo sampling by sampling along the path.</p>
+<p>However, solve this is challenging not because of the MC intrgration or the sampling. It is because that an unbaised estimation for $T$ cannot simply infered form an unbaised estimation of the expoential integration here. (That is: $E[exp(X)] != exp(E[x])$).</p>
+<p>I want to give a very simple proof:</p>
+$$\mathbb{E}[X] = (1/2)\cdot0 + (1/2)\cdot2 = 1$$<p>
+And then $e^{-\mathbb{E}[X]} \;=\; e^{-1} \;\approx\; 0.3679$. Meanwhile, $\mathbb{E}[e^{-X}] \;=\; \tfrac12\,e^{0} + \tfrac12\,e^{-2} \;=\; 0.5677$.</p>
+<p><strong>Homogenized free-flight sampling</strong>. To solve this problem, we need to apply a trick called <em>homogenization</em>. So we convert the heterogeneouse medium into a hoomgeneous medium by inserting the <em>fake</em> particle in to the medium. Then we have a closed-form solution.</p>
+<p>You might think that: What??? If I plugin the <em>fake</em> medium, then after we minus it, we then is still a heterogeneous medium. (At least I thought it at the first glance or see this solution. :&lt;)</p>
+<p>Anyway, then our formulation is like the following:</p>
+$$\frac{d}{dt}L(\mathbf{p}(t), \omega) = -(\sigma_t(\mathbf{p}(t)) + \sigma_n(\mathbf{p}(t)))L(\mathbf{p}(t), \omega) + \sigma_n(\mathbf{p}(t))L(\mathbf{p}(t), \omega) + \sigma_s(\mathbf{p}(t)) \int_{S^2} \rho(\omega, \omega')L(\mathbf{p}(t), \omega')d\omega'$$<p>(Might messy to see on website, if someone is really watching this, I really wish you can see Tzumao&rsquo;s handout).</p>
+<p>Here, $\sigma_n$ is what we fulfill the medium. All we did is add something and minus something. Now, we want the first part, when $ \sigma_t(\mathbf{p}(t)) + \sigma_n(\mathbf{p}(t))$ can be a constant, so that we will have an analytical solution for the first part.</p>
+<p>A common way to choose $ \sigma_t(\mathbf{p}(t)) + \sigma_n(\mathbf{p}(t))$ is the upper bound of $\sigma_t(\mathbf{p}(t)) $ for all t, so that $\sigma_n(\mathbf{p}(t))$ is larger than 0 and the number is easy to get.</p>
+<p>We integrate the formula both side again, same as what we did before to get our radiation function:</p>
+$$
+L(p, \omega) 
+= \int_{0}^{t_{\mathrm{hit}}} 
+    T_m\bigl(p(0), p(t')\bigr)
+    \Bigl(
+        \sigma_n\bigl(p(t')\bigr)\,L\bigl(p(t'), \omega\bigr)
+        \;+\;
+        \sigma_s\bigl(p(t')\bigr)
+        \int_{S^2}
+            \rho(\omega, \omega')\,L\bigl(p(t'), \omega'\bigr)
+        \, d\omega'
+    \Bigr)\,
+    dt'
+\;+\;
+T_m\bigl(p(0), p(t_{\mathrm{hit}})\bigr)\,
+L_{\mathrm{surface}}\bigl(p(t_{\mathrm{hit}}), \omega\bigr).
+$$<p>Magically, our $T_m$ is now not a $exp(E[x])$! And we can get the result by using MC integral.</p>
+<p>Then we can have our process updated handling the <em>fake</em> particle hit event. We can introduce the importance sampling here and since the math here is trival, I will simply skip this part.</p>
+<ul>
+<li><input disabled="" type="checkbox"> Fulfill this part indetail.</li>
+</ul>
+<p><strong>Homogenized nee</strong>.</p>
+<p>In nee, we also have same problem as mentioned before. Same techinic can be apply! And the result is just same.</p>
+$$
+T\bigl(p(0), p(t')\bigr)
+~=~
+\exp\!\Bigl(
+  -\!\int_{0}^{t'} \sigma_{t}\bigl(p(t'')\bigr)\,dt''
+\Bigr).
+$$<p>Differentiate and replace using majorant:</p>
+$$
+\frac{d}{dt'}\,T_{p}(t')
+~=~
+-\,\sigma_{t}\bigl(p(t')\bigr)\,T_{p}(t')
+~=~
+-\,\sigma_{m}\,T_{p}(t') \;+\; \sigma_{n}\bigl(p(t')\bigr)\,T_{p}(t'),
+\quad
+T_{p}(0)=1,
+$$<p>To solve, we can do change of variable $\widetilde{T}_{p}(t') \;=\; \exp\bigl(\sigma_{m}\,t'\bigr)\;T_{p}(t')$.</p>
+$$
+\frac{d}{dt'}\,\widetilde{T}_{p}(t')
+~=~
+\sigma_{n}\bigl(p(t')\bigr)\,\widetilde{T}_{p}(t'),
+\quad
+\widetilde{T}_{p}(0) \;=\; 1,
+$$<p>Then, we simply integrate both side back with $C = 1$</p>
+\[
+T_{p}(t')
+~=~
+\frac{\widetilde{T}_{p}(t')}{\exp\bigl(\sigma_{m}\,t'\bigr)}
+~=~
+\exp\bigl(-\sigma_{m}\,t'\bigr)\!
+\Bigl(
+  1
+  \;+\;
+  \int_{0}^{t'}
+    \sigma_{n}\bigl(p(t'')\bigr)\,
+    \exp\!\bigl(\sigma_{m}\,t''\bigr)\,
+    \widetilde{T}_{p}(t'')
+  \,dt''
+\Bigr).
+\]<p>Our final formulation is like this then:</p>
+\[
+T_{p}(t')
+~=~
+\exp\bigl(-\sigma_{m}\,t'\bigr)
+\;+\;
+\int_{0}^{t'}
+  \exp\!\bigl(\sigma_{m}\,(t''-t')\bigr)\,
+  \sigma_{n}\bigl(p(t'')\bigr)\,
+  T_{p}(t'')
+\,dt'',
+\]<p>The upon math seems scary, but everything here is as simple as the first class of Calculus I in college. For more detail, you can refer to the handout!</p>
+<p><strong>Deal with chromatic media.</strong> Since our parameter can we RGB numbers or some response to wave length, we need to sample each channel and importance sample them. So we also need a Spectrum PDF instead of Real.</p>
+<p>This is all I want to review for the volume renderer. It is more complicated than a normal pathtracer, but once you understand the big idea behind, the only thing left is debugging your code.</p>
+
+      </div>
+
+      
+  <time class="mt-12 mb-8 block text-xs text-gray-500 ltr:text-right rtl:text-left dark:text-gray-400" datetime="2024-12-25T00:00:00.000Z">
+    <span>Last updated on</span>
+    Dec 25, 2024</time>
+
+      <div class="container mx-auto prose prose-slate lg:prose-xl dark:prose-invert mt-5">
+        
+        <div class="max-w-prose print:hidden">
+  
+  
+
+  
+
+<div class="flex justify-center">
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/courses/">Courses</a>
+  
+  <a class="no-underline bg-primary-100 hover:bg-primary-300 text-primary-800 text-xs font-medium mr-2 px-2.5 py-0.5 lg:px-5 lg:py-2 rounded dark:bg-primary-900 dark:hover:bg-primary-700 dark:text-primary-300" href="/tags/graphics/">Graphics</a>
+  
+</div>
+
+
+  
+<section class="flex flex-row flex-wrap justify-center pt-4 text-xl">
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://twitter.com/intent/tweet?url=http%3A%2F%2Flocalhost%3A1313%2Fproject%2Fcse272_disney%2F&amp;text=Disney&#43;BSDF&#43;-&#43;UCSD&#43;CSE&#43;272"
+    title="X"
+    aria-label="X"
+    id="share-link-x"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.facebook.com/sharer.php?u=http%3A%2F%2Flocalhost%3A1313%2Fproject%2Fcse272_disney%2F&amp;t=Disney&#43;BSDF&#43;-&#43;UCSD&#43;CSE&#43;272"
+    title="Facebook"
+    aria-label="Facebook"
+    id="share-link-facebook"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="currentColor" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+    
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="mailto:?subject=Disney%20BSDF%20-%20UCSD%20CSE%20272&amp;body=http%3A%2F%2Flocalhost%3A1313%2Fproject%2Fcse272_disney%2F"
+    title="Email"
+    aria-label="Email"
+    id="share-link-email"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="https://www.linkedin.com/shareArticle?url=http%3A%2F%2Flocalhost%3A1313%2Fproject%2Fcse272_disney%2F&amp;title=Disney&#43;BSDF&#43;-&#43;UCSD&#43;CSE&#43;272"
+    title="LinkedIn"
+    aria-label="LinkedIn"
+    id="share-link-linkedin"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+  </a>
+  
+
+  
+  
+  
+  
+  
+  
+  <a
+    target="_blank" rel="noopener"
+    class="m-1 rounded-md bg-neutral-300 p-1.5 text-neutral-700 hover:bg-primary-500 hover:text-neutral-300 dark:bg-neutral-700 dark:text-neutral-300 dark:hover:bg-primary-400 dark:hover:text-neutral-800"
+    href="whatsapp://send?text=Disney&#43;BSDF&#43;-&#43;UCSD&#43;CSE&#43;272%20http%3A%2F%2Flocalhost%3A1313%2Fproject%2Fcse272_disney%2F"
+    title="WhatsApp"
+    aria-label="WhatsApp"
+    id="share-link-whatsapp"
+  >
+    <svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="currentColor"><path d="m187.58 144.84-32-16a8 8 0 0 0-8 .5l-14.69 9.8a40.55 40.55 0 0 1-16-16l9.8-14.69a8 8 0 0 0 .5-8l-16-32A8 8 0 0 0 104 64a40 40 0 0 0-40 40 88.1 88.1 0 0 0 88 88 40 40 0 0 0 40-40 8 8 0 0 0-4.42-7.16ZM152 176a72.08 72.08 0 0 1-72-72 24 24 0 0 1 19.29-23.54l11.48 23L101 118a8 8 0 0 0-.73 7.51 56.47 56.47 0 0 0 30.15 30.15A8 8 0 0 0 138 155l14.61-9.74 23 11.48A24 24 0 0 1 152 176ZM128 24a104 104 0 0 0-91.82 152.88l-11.35 34.05a16 16 0 0 0 20.24 20.24l34.05-11.35A104 104 0 1 0 128 24Zm0 192a87.87 87.87 0 0 1-44.06-11.81 8 8 0 0 0-6.54-.67L40 216l12.47-37.4a8 8 0 0 0-.66-6.54A88 88 0 1 1 128 216Z"/></svg>
+  </a>
+  
+</section>
+
+
+  
+
+
+
+
+
+
+
+
+  
+  
+    
+
+
+
+  
+  
+  
+    
+  
+  
+  
+
+<div class="flex pt-12 pb-4">
+  
+  
+  <img
+    class="mr-4 h-24 w-24 rounded-full"
+    width="96"
+    height="96"
+    alt="Zenan Li"
+  src="/author/zenan-li/avatar_hu16505045146259868277.jpg"
+  loading="lazy"
+  />
+  
+  <div class="place-self-center">
+    <div class="text-[0.6rem] uppercase leading-3 text-neutral-500 dark:text-neutral-400">
+      Authors
+    </div>
+    <div class="font-semibold leading-6 text-neutral-800 dark:text-neutral-300">
+      <a href="http://localhost:1313/" class="no-underline">
+      Zenan Li
+      </a>
+    </div>
+
+    
+    <div class="text-sm font-bold text-neutral-700 dark:text-neutral-300">
+    Master Student
+    </div>
+    
+
+
+    
+
+    <div class="text-2xl sm:text-lg pt-1">
+
+      
+<div class="flex flex-wrap text-neutral-500 dark:text-neutral-300">
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="/lizn1005@gmail.com"
+      
+      aria-label="At-Symbol"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M16.5 12a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 1 0-2.636 6.364M16.5 12V8.25"/></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://github.com/wuyah"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Github"
+    ><svg style="height: 1em;" fill="currentColor" viewBox="3 3 18 18"><path d="M12 3C7.0275 3 3 7.12937 3 12.2276C3 16.3109 5.57625 19.7597 9.15374 20.9824C9.60374 21.0631 9.77249 20.7863 9.77249 20.5441C9.77249 20.3249 9.76125 19.5982 9.76125 18.8254C7.5 19.2522 6.915 18.2602 6.735 17.7412C6.63375 17.4759 6.19499 16.6569 5.8125 16.4378C5.4975 16.2647 5.0475 15.838 5.80124 15.8264C6.51 15.8149 7.01625 16.4954 7.18499 16.7723C7.99499 18.1679 9.28875 17.7758 9.80625 17.5335C9.885 16.9337 10.1212 16.53 10.38 16.2993C8.3775 16.0687 6.285 15.2728 6.285 11.7432C6.285 10.7397 6.63375 9.9092 7.20749 9.26326C7.1175 9.03257 6.8025 8.08674 7.2975 6.81794C7.2975 6.81794 8.05125 6.57571 9.77249 7.76377C10.4925 7.55615 11.2575 7.45234 12.0225 7.45234C12.7875 7.45234 13.5525 7.55615 14.2725 7.76377C15.9937 6.56418 16.7475 6.81794 16.7475 6.81794C17.2424 8.08674 16.9275 9.03257 16.8375 9.26326C17.4113 9.9092 17.76 10.7281 17.76 11.7432C17.76 15.2843 15.6563 16.0687 13.6537 16.2993C13.98 16.5877 14.2613 17.1414 14.2613 18.0065C14.2613 19.2407 14.25 20.2326 14.25 20.5441C14.25 20.7863 14.4188 21.0746 14.8688 20.9824C16.6554 20.364 18.2079 19.1866 19.3078 17.6162C20.4077 16.0457 20.9995 14.1611 21 12.2276C21 7.12937 16.9725 3 12 3Z"></path></svg></a>
+  
+    
+    
+    
+    
+      
+    
+    <a
+      class="pr-2 transition-transform hover:scale-125 hover:text-primary-700 dark:hover:text-primary-400"
+      style="will-change:transform;"
+      href="https://www.linkedin.com/in/zeli046/"
+      target="_blank" rel="noopener" rel="me noopener noreferrer"
+      aria-label="Brands/Linkedin"
+    ><svg style="height: 1em;" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg></a>
+  
+</div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
+
+
+  
+  
+    
+    
+    
+      
+      
+    
+<div class="pt-1 no-prose w-full">
+  <hr class="border-dotted border-neutral-300 dark:border-neutral-600" />
+  <div class="flex flex-col md:flex-row flex-nowrap justify-between gap-5 pt-2">
+    <div class="">
+      
+        <a class="group flex no-underline" href="/project/cse270/">
+          <span
+            class="mt-[-0.3rem] me-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline rtl:hidden">&larr;</span></span>
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >CSE270 - Discret Differential Geometry</span>
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                Dec 25, 2024
+              
+            </span>
+          </span>
+        </a>
+      
+    </div>
+    <div class="">
+      
+        <a class="group flex text-right no-underline" href="/project/shadertoy/">
+          <span class="flex flex-col">
+            <span
+              class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"
+            >Shader Toy Demo from NUS</span
+            >
+            <span class="mt-[0.1rem] text-xs text-neutral-500 dark:text-neutral-400">
+              
+                Dec 25, 2024
+              
+            </span>
+          </span>
+          <span
+            class="mt-[-0.3rem] ms-2 text-neutral-700 transition-transform group-hover:-translate-x-[2px] group-hover:text-primary-600 dark:text-neutral dark:group-hover:text-primary-400"
+          ><span class="ltr:inline">&rarr;</span></span>
+        </a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+  
+
+
+  
+
+
+
+</div>
+
+      </div>
+
+    </main>
+  </article>
+</div>
+
+    </div>
+    <div class="page-footer">
+      <footer class="container mx-auto flex flex-col justify-items-center text-sm leading-6 mt-24 mb-4 text-slate-700 dark:text-slate-200">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+  
+  
+    
+  
+  
+    
+  
+
+  
+
+  
+  <p class="powered-by text-center">
+    © 2025 Me. This work is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank">CC BY NC ND 4.0</a>
+  </p>
+  
+
+  <p class="powered-by footer-license-icons">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0" rel="noopener noreferrer" target="_blank" aria-label="Creative Commons">
+      <i class="fab fa-creative-commons fa-2x" aria-hidden="true"></i>
+      <i class="fab fa-creative-commons-by fa-2x" aria-hidden="true"></i>
+      
+        <i class="fab fa-creative-commons-nc fa-2x" aria-hidden="true"></i>
+      
+      
+        <i class="fab fa-creative-commons-nd fa-2x" aria-hidden="true"></i>
+      
+    </a>
+  </p>
+
+
+
+
+
+  <p class="powered-by text-center">
+    
+    
+    
+      
+      
+      
+      
+      
+      
+      Published with <a href="https://hugoblox.com/?utm_campaign=poweredby" target="_blank" rel="noopener">Hugo Blox Builder</a> — the free, <a href="https://github.com/HugoBlox/hugo-blox-builder" target="_blank" rel="noopener">open source</a> website builder that empowers creators.
+    
+  </p>
+
+</footer>
+
+    </div>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

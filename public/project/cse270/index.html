@@ -1,6 +1,6 @@
 <!doctype html>
 <!-- This site was created with Hugo Blox. https://hugoblox.com -->
-<!-- Last Published: February 23, 2025 --><html lang="en-us" dir="ltr"
+<!-- Last Published: March 11, 2025 --><html lang="en-us" dir="ltr"
       data-wc-theme-default="system">
   
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
@@ -552,6 +552,140 @@
 
 
 
+  
+  
+  <link type="text/css" rel="stylesheet" href="/dist/lib/katex/katex.min.505d5f829022bb7b4f24dfee0aa1141cd7bba67afe411d1240335f820960b5c3.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr&#43;QR0SQDNfgglgtcM=" />
+  
+  
+  <script defer src="/dist/lib/katex/katex.min.dc84b296ec3e884de093158f760fd9d45b6c7abe58b5381557f4e138f46a58ae.js" integrity="sha256-3ISyluw&#43;iE3gkxWPdg/Z1Ftser5YtTgVV/ThOPRqWK4="></script>
+  
+  
+  
+  
+  <script defer src="/js/katex-renderer.6579ec9683211cfb952064aedf3a3baea5eeb17a061775b32b70917474637c80.js" integrity="sha256-ZXnsloMhHPuVIGSu3zo7rqXusXoGF3WzK3CRdHRjfIA="></script>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+
 
 
 
@@ -848,7 +982,7 @@
             </li><li class="flex flex-col "><a
     class="hb-sidebar-custom-link
       text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-primary-800 dark:hover:text-gray-50"
-    href="/project/cse272/"
+    href="/project/cse272_disney/"
     
   >Disney BSDF - UCSD CSE 272
     </a>
@@ -1407,32 +1541,22 @@ This leads to solving the eigenvalue problem:
 <h4 id="implementation-in-houdini"><strong>Implementation in Houdini</strong></h4>
 <ol>
 <li>
-<p><strong>Laplacian and Area Matrices:</strong></p>
-<ul>
-<li>The Laplacian matrix (\(L\)) and area matrix (\(A\)) were precomputed using sparse matrix operations. The combined conformal matrix (\(C\)) was derived as:
 \[
      C = \frac{1}{2} L - A
-     \]
-They are same as what we did in section 1.</li>
-</ul>
+     \]<p>
+They are same as what we did in section 1.</p>
 </li>
 <li>
-<p><strong>Eigenvalue Solver:</strong></p>
-<ul>
-<li>Using a spectral solver, the smallest nonzero eigenvalue and its corresponding eigenvector were computed. This eigenvector defines the conformal map.</li>
-</ul>
+<p><strong>Eigenvalue Solver:</strong>
+Using a spectral solver, the smallest nonzero eigenvalue and its corresponding eigenvector were computed. This eigenvector defines the conformal map.</p>
 </li>
 <li>
-<p><strong>Texture Coordinates:</strong></p>
-<ul>
-<li>The real and imaginary parts of the solution were assigned as \(u\) and \(v\) attributes to the mesh points. These attributes define the conformal texture map.</li>
-</ul>
+<p><strong>Texture Coordinates:</strong>
+The real and imaginary parts of the solution were assigned as \(u\) and \(v\) attributes to the mesh points. These attributes define the conformal texture map.</p>
 </li>
 <li>
-<p><strong>Visualization:</strong></p>
-<ul>
-<li>Houdini&rsquo;s and texture shaders and displacement shader were used to preview the conformal map and apply textures without distortion.</li>
-</ul>
+<p><strong>Visualization:</strong>
+Houdini&rsquo;s texture shaders and displacement shader were used to preview the conformal map and apply textures without distortion.</p>
 </li>
 </ol>
 <h4 id="result-2"><strong>Result</strong></h4>
@@ -1825,7 +1949,7 @@ where \(L\) is constructed from the covariant derivative, and \(\star_0, \star_1
     </div>
     <div class="">
       
-        <a class="group flex text-right no-underline" href="/project/cse272/">
+        <a class="group flex text-right no-underline" href="/project/cse272_disney/">
           <span class="flex flex-col">
             <span
               class="mt-[0.1rem] leading-6 group-hover:underline group-hover:decoration-primary-500"

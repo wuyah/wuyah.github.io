@@ -32,7 +32,7 @@ Thanks to Prof. Chin, I learned a lot from this course by praticing in the proje
 ---
 
 ## Project 1: Optimizing Matrix Multiplication with CPU Vectorization
-
+![alt text](image-3.png)
 In this project, we optimized matrix multiplication by leveraging CPU vector extensions such as Intel's AVX and ARM's SVE to enhance computational throughput.
 
 **Techniques Employed**:
@@ -48,7 +48,7 @@ In this project, we optimized matrix multiplication by leveraging CPU vector ext
 ---
 
 ## Project 2: Accelerating Matrix Multiplication with CUDA
-
+![alt text](image-4.png)
 This project focused on implementing matrix multiplication on NVIDIA GPUs using CUDA to exploit massive parallelism and achieve high computational throughput.
 
 **Approach**:
@@ -66,7 +66,12 @@ This project focused on implementing matrix multiplication on NVIDIA GPUs using 
 ---
 
 ## Project 3: Distributed Wave Simulation with MPI
-
+<!-- ![alt text](image.png)![alt text](image-1.png)![alt text](image-2.png) -->
+<div style="display: flex; justify-content: center;">
+  <img src="image.png" alt="Image 1" width="30%">
+  <img src="image-1.png" alt="Image 2" width="30%">
+  <img src="image-2.png" alt="Image 3" width="30%">
+</div>
 In this project, we developed a wave propagation simulation using MPI to distribute computations across multiple processors, enhancing scalability and performance.
 
 **Methodology**:
